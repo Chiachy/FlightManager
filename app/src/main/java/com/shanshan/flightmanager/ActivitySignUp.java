@@ -1,6 +1,7 @@
 package com.shanshan.flightmanager;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class ActivitySignUp extends Activity {
 
@@ -18,6 +20,7 @@ public class ActivitySignUp extends Activity {
     private EditText userAge;
     private RadioGroup mRadioGroup;
     private EditText userName;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,9 @@ public class ActivitySignUp extends Activity {
         userAge = (EditText) findViewById(R.id.editText4);
         userName = (EditText) findViewById(R.id.editText21);
         userAge.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
+
+        mToolbar = (Toolbar) findViewById(R.id.sign_up_toolbar);
+        mToolbar.setTitleTextColor(Color.parseColor("#ffffff"));
 
         mRadioGroup = (RadioGroup) findViewById(R.id.radio);
 

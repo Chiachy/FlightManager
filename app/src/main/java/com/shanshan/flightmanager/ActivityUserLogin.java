@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +30,10 @@ public class ActivityUserLogin extends Activity {
      */
     private UserLoginTask mAuthTask = null;
 
+    private static String MANAGER_ACCOUNT = "manager";
+
+    private static String MANAGER_PASSWORD = "manager";
+
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
@@ -42,7 +47,7 @@ public class ActivityUserLogin extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
-        final FlightSystemApplication application = (FlightSystemApplication) getApplication();
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
 
@@ -82,12 +87,15 @@ public class ActivityUserLogin extends Activity {
         setActionBar(mUserLoginToolbar);
 
         mSignUpTextView = (TextView) findViewById(R.id.sign_up );
+        mSignUpTextView.setPaintFlags(mSignUpTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         mSignUpTextView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ActivityUserLogin.this, ActivitySignUp.class));
             }
         });
+
+
     }
 
     /**
@@ -108,8 +116,6 @@ public class ActivityUserLogin extends Activity {
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-
-
         boolean cancel = false;
         View focusView = null;
 
@@ -129,6 +135,12 @@ public class ActivityUserLogin extends Activity {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
+        }
+
+        if (email.equals(MANAGER_ACCOUNT) && password.equals(MANAGER_PASSWORD)){
+            startActivity(new Intent(ActivityUserLogin.this, ActivityManagerView.class));
+            Toast.makeText(this, "管理员登陆成功", Toast.LENGTH_LONG);
+            finish();
         }
 
 
@@ -235,8 +247,8 @@ public class ActivityUserLogin extends Activity {
 
             if (success) {
                 finish();
-                final FlightSystemApplication application = (FlightSystemApplication) getApplication();
                 Toast.makeText(ActivityUserLogin.this, "登入成功", Toast.LENGTH_LONG ).show();
+                final FlightSystemApplication application = (FlightSystemApplication) getApplication();
                 application.setIsLogin(true);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

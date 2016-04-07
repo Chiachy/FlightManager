@@ -1,18 +1,21 @@
 package com.shanshan.flightmanager;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 /**
  * Created by Shakugan on 16/4/5.
  */
 public class ActivitySearch extends AppCompatActivity {
 
+    private Toolbar mToolbar;
     private EditText searchEdit;
     private Button searchBtn;
 
@@ -22,6 +25,8 @@ public class ActivitySearch extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         searchEdit = (EditText) findViewById(R.id.search_edit);
         searchBtn = (Button) findViewById(R.id.search_btn);
+        mToolbar = (Toolbar) findViewById(R.id.search_toolbar);
+        mToolbar.setTitleTextColor(Color.parseColor("#ffffff"));
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

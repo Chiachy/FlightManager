@@ -21,7 +21,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
 
     private FloatingActionButton flightBroChooseButton;
     private RecyclerView userListView;
-    private RecycleViewAdapter mAdapter;
+    private AdapterRecycleView mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         setContentView(R.layout.activity_flight_browsing);
 
         /**Toolbar 配置代码块*/
-        Toolbar fbToolbar = (Toolbar) findViewById( R.id.fb_toolbar );
+        Toolbar fbToolbar = (Toolbar) findViewById( R.id.user_details_toolbar);
         fbToolbar.setTitleTextColor( Color.parseColor( "#ffffff" ) );
         setActionBar(fbToolbar);
 
@@ -44,28 +44,20 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         /** recycleView 配置代码块 */
         initViews();//初始化RecycleView
 
-        mAdapter = new RecycleViewAdapter(this , FlightManagerDB.getInstance(this).loadFlightDatas());
+        mAdapter = new AdapterRecycleView(this , FlightManagerDB.getInstance(this).loadFlightDatas());
 
         userListView.setAdapter(mAdapter);
-
         //设置re-View的布局，并调用
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL , false);
-
         userListView.setLayoutManager(linearLayoutManager);
-
         userListView.setHasFixedSize(true);//提高性能
-
         //设置分割线属性，并调用
         RecyclerViewDividerLine recycViewDividerLine = new RecyclerViewDividerLine(RecyclerViewDividerLine.HORIZONTAL);
-
         recycViewDividerLine.setSize(15);
-
         recycViewDividerLine.setColor(0xFFDDDDDD);
-
         userListView.addItemDecoration(recycViewDividerLine);
 
-        /** fab配置代码块 */
         flightBroChooseButton = (FloatingActionButton) findViewById(R.id.flight_bro_choose_button);
         flightBroChooseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,8 +85,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()){
                 case R.id.action_sign_in: {
-                    final FlightSystemApplication application = (FlightSystemApplication)
-                            getApplication();
+                    final FlightSystemApplication application = (FlightSystemApplication) getApplication();
                     if(!application.getIsLogin()){
                         startActivity(new Intent(
                                 ActivityFlightBrowsing.this , ActivityUserLogin.class)

@@ -11,14 +11,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterSearchResult extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mInflater;
     private Context mContext;
     public static List<FlightDatas> mDatas = new ArrayList<>();
 //    private FlightDatas mFlightDatas;
 
-    public SearchResultAdapter(Context context, List<FlightDatas> mDatas){
+    public AdapterSearchResult(Context context, List<FlightDatas> mDatas){
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);

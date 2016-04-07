@@ -67,9 +67,9 @@ public class ActivityFlightDetails extends Activity {
             }
         });
         if (getIntent().getBooleanExtra("isSearchResult",false)) {
-            datas = SearchResultAdapter.mDatas.get(getIntent().getIntExtra("id",0));
+            datas = AdapterSearchResult.mDatas.get(getIntent().getIntExtra("id",0));
         } else {
-            datas = RecycleViewAdapter.mDatas.get(getIntent().getIntExtra("id", 0));
+            datas = AdapterRecycleView.mDatas.get(getIntent().getIntExtra("id", 0));
         }
 
         mConpanyName.setText(datas.getCompanyId());

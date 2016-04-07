@@ -26,7 +26,7 @@ public class FlightSystemApplication extends Application {
     public void onCreate() {
         isLogin = false;
 
-        //使用chrome调试本地数据库
+        //使用chrome扩展程序Stetho调试本地数据库
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this).enableDumpapp(
                         Stetho.defaultDumperPluginsProvider(this)

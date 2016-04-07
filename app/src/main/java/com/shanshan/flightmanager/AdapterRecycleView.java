@@ -12,13 +12,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterRecycleView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mInflater;
     private Context mContext;
     public static List<FlightDatas> mDatas = new ArrayList<>();
 
-    public RecycleViewAdapter(Context context, List<FlightDatas> mDatas){
+    public AdapterRecycleView(Context context, List<FlightDatas> mDatas){
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);

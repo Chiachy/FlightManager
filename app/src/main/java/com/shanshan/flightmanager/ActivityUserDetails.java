@@ -2,6 +2,7 @@ package com.shanshan.flightmanager;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class ActivityUserDetails extends Activity {
     private RecyclerView mRecyclerView;
     private OrderAdapter orderAdapter;
     private Button mButton;
+    private Toolbar mToolbar;
 
     public static String id;
     private UserDatas userDatas;
@@ -87,6 +90,9 @@ public class ActivityUserDetails extends Activity {
             TextView textView = (TextView) findViewById(R.id.list_info);
             textView.setVisibility(View.GONE);
         }
+
+        mToolbar = (Toolbar) findViewById(R.id.user_details_toolbar);
+        mToolbar.setTitleTextColor(Color.parseColor("#ffffff"));
     }
 
 
