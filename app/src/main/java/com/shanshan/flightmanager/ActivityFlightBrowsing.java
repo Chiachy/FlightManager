@@ -1,9 +1,7 @@
 package com.shanshan.flightmanager;
 
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,18 +13,15 @@ import android.view.View;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import java.util.ArrayList;
-import java.util.List;
 /**
  * A Flight Browsing User interface
  * 航班信息浏览界面，可以进行预定航班和查询、更改航班信息的操作，并登陆个人账号
  * */
 public class ActivityFlightBrowsing extends AppCompatActivity {
 
-    private List<testData> testDataList = new ArrayList<testData>();
     private FloatingActionButton flightBroChooseButton;
     private RecyclerView userListView;
-    private recycleViewAdapter mAdapter;
+    private RecycleViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +29,22 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         setContentView(R.layout.activity_flight_browsing);
 
         /**Toolbar 配置代码块*/
-        //TODO: 2016/3/9 Toolbar代码块:Toolbar定义未完成
-        Toolbar fbToolbar = (Toolbar) findViewById(R.id.fb_toolbar);
-        fbToolbar.setTitleTextColor(Color.parseColor("#ffffff"));
+        Toolbar fbToolbar = (Toolbar) findViewById( R.id.fb_toolbar );
+        fbToolbar.setTitleTextColor( Color.parseColor( "#ffffff" ) );
         setActionBar(fbToolbar);
 
+        //检查FlightDatas表是否存在
+        FlightManagerDB mFlightDatabaseOpenHelper = FlightManagerDB
+                .getInstance(ActivityFlightBrowsing.this);
+        if(!mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }
+
         //绑定item的点击事件,并调用
-        fbToolbar.setOnMenuItemClickListener(onMenuItemClickListener);
+        fbToolbar.setOnMenuItemClickListener( onMenuItemClickListener );
 
         /** recycleView 配置代码块 */
-        initTestData();//初始化listView测试数据
-
         initViews();//初始化RecycleView
 
-        mAdapter = new recycleViewAdapter(this , testDataList);
+        mAdapter = new RecycleViewAdapter(this , FlightManagerDB.getInstance(this).loadFlightDatas());
 
         userListView.setAdapter(mAdapter);
 
@@ -57,8 +54,10 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
 
         userListView.setLayoutManager(linearLayoutManager);
 
+        userListView.setHasFixedSize(true);//提高性能
+
         //设置分割线属性，并调用
-        DividerLine recycViewDividerLine = new DividerLine(DividerLine.HORIZONTAL);
+        RecyclerViewDividerLine recycViewDividerLine = new RecyclerViewDividerLine(RecyclerViewDividerLine.HORIZONTAL);
 
         recycViewDividerLine.setSize(15);
 
@@ -71,9 +70,9 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         flightBroChooseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2016/3/25 fab的点击跳转功能
-                Toast.makeText(ActivityFlightBrowsing.this, "功能尚未完成", Toast.LENGTH_SHORT)
-                        .show();
+                Intent intent  = new Intent(ActivityFlightBrowsing.this , ActivitySearch.class);
+                startActivity(intent);
+                //initFlightDatas4DB();
             }
         });
     }
@@ -85,18 +84,31 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         userListView = (RecyclerView) findViewById(R.id.userlistView);
     }
 
-    /**
-     * toolbar配置
-     * */
     /*
-    * 设置menu item的监听器
-    * */
+     *  设置menu item的监听器
+     */
     private Toolbar.OnMenuItemClickListener onMenuItemClickListener =
             new Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
-            Intent intent = new Intent(ActivityFlightBrowsing.this , ActivityUserLogin.class);
-            startActivity(intent);
+            switch (item.getItemId()){
+                case R.id.action_sign_in: {
+                    final FlightSystemApplication application = (FlightSystemApplication)
+                            getApplication();
+                    if(!application.getIsLogin()){
+                        startActivity(new Intent(
+                                ActivityFlightBrowsing.this , ActivityUserLogin.class)
+                        );
+                    }else{
+                        startActivity(new Intent(
+                                ActivityFlightBrowsing.this , ActivityUserDetails.class)
+                        );
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
             return false;
         }
     };
@@ -108,200 +120,103 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        super.onCreateOptionsMenu(menu);
+        //super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_sign_in:
-                Intent intent = new Intent(ActivityFlightBrowsing.this , ActivityUserLogin.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
+    private void initFlightDatas4DB() {
 
+        FlightManagerDB db = FlightManagerDB.getInstance(ActivityFlightBrowsing.this);
 
+        FlightDatas first = new FlightDatas("四川航空", "3U8548" ,"北京", "上海", "8:06", "10:38",
+                "杭州", "2016.03.11");
+        db.saveFlightDatas(first);
 
-    /**
-     * RecycleView 分割线装饰类
-     */
-    public class DividerLine extends RecyclerView.ItemDecoration {
-        public static final int HORIZONTAL = LinearLayoutManager.HORIZONTAL;
+        FlightDatas first2 = new FlightDatas("南方航空", "CZ9902", "深圳", "上海", "8:06", "10:38",
+                "南昌", "2016.03.21");
+        db.saveFlightDatas(first2);
 
-        public static final int VERTICAL = LinearLayoutManager.VERTICAL;
+        FlightDatas first3 = new FlightDatas("中国国航", "CA4194","北京", "九龙", "14:06", "15:58",
+                "长沙","2016.03.38");
+        db.saveFlightDatas(first3);
 
-        private Paint paint;//画笔
+        FlightDatas first4 = new FlightDatas("山东航空", "SC4194", "北京", "上海", "8:06", "10:38",
+                "南昌", "2016.03.31");
+        db.saveFlightDatas(first4);
 
-        private int orientation;//布局方向
+        FlightDatas first5 = new FlightDatas("西藏航空" ,"TV6102", "西藏", "上海", "10:06", "10:38",
+                "南昌", "2016.03.23");
+        db.saveFlightDatas(first5);
 
-        private int color;//分割线颜色
+        FlightDatas first6 = new FlightDatas("深圳航空", "ZH4194", "北京", "上海", "8:06", "10:38",
+                "南昌", "2016.05.31");
+        db.saveFlightDatas(first6);
 
-        private int size;//分割线尺寸
+        FlightDatas first7 = new FlightDatas("四川航空" , "3U8896","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.03.16");
+        db.saveFlightDatas(first7);
 
-        //分割线尺寸
-        public DividerLine(){
-            this(VERTICAL);
-        }
+        FlightDatas first8 = new FlightDatas("海南航空" , "HU7147", "深圳", "上海", "8:06", "10:38",
+                "南昌", "2016.03.31");
+        db.saveFlightDatas(first8);
 
-        public DividerLine(int orientation){
-            this.orientation = orientation;
-            paint = new Paint();
-        }
+        FlightDatas first9 = new FlightDatas("海南航空", "HU7141", "北京", "上海", "8:06", "10:38",
+                "南昌", "2016.05.30");
+        db.saveFlightDatas(first9);
 
-        @Override
-        public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-            super.onDrawOver(c, parent, state);
+        FlightDatas first10 = new FlightDatas("中国国航","CA1405", "北京", "上海", "8:06", "10:38",
+                "南昌", "2016.02.18");
+        db.saveFlightDatas(first10);
 
-            if (orientation == VERTICAL) {
-                drawHorizontal(c, parent);
-            } else {
-                drawHorizontal(c, parent);
-            }
-        }
+        FlightDatas first11 = new FlightDatas("中国国航","CA1415","西藏", "上海", "10:06", "10:38",
+                "南昌", "2016.02.21");
+        db.saveFlightDatas(first11);
 
-        /*
-        * 设置分割线
-        *
-        * @param color 颜色
-        * */
-        public void setColor(int color) {
-            this.color = color;
-            paint.setColor(color);
-        }
+        FlightDatas first12 = new FlightDatas("山东航空","SC1405","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.06.19");
+        db.saveFlightDatas(first12);
 
-        /*
-        *设置分割线尺寸
-        *
-        * @param size 尺寸
-        * */
-        public void setSize(int size){
-            this.size = size ;
-        }
+        FlightDatas first13 = new FlightDatas("西藏航空","TV6111","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.04.08");
+        db.saveFlightDatas(first13);
 
-        /*
-        * 绘制垂直分割线
-        * */
-        protected void drawVertical(Canvas c, RecyclerView parent){
-            final int top = parent.getPaddingTop();
-            final int bottom = parent.getHeight() - parent.getPaddingBottom();
+        FlightDatas first14 = new FlightDatas("深圳航空","ZH1405","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.02.18");
+        db.saveFlightDatas(first14);
 
-            final int childCount = parent.getChildCount();
-            for (int i = 0; i < childCount ; i++){
-                final View child = parent.getChildAt(i);
-                final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-                final int left = child.getRight() + params.rightMargin;
-                final int right = left + size ;
+        FlightDatas first15 = new FlightDatas("联合航空","KN5215","深圳", "上海", "8:06", "10:38",
+                "南昌", "2016.03.01");
+        db.saveFlightDatas(first15);
 
-                c.drawRect(left , top , right , bottom, paint);
-            }
+        FlightDatas first16 = new FlightDatas("厦门航空","MF1836","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.07.18");
+        db.saveFlightDatas(first16);
 
-        }
-        //绘制水平风格线
-        private void drawHorizontal(Canvas c, RecyclerView parent) {
-            final int left = parent.getPaddingLeft();
-            final int right = parent.getWidth() - parent.getPaddingRight();
+        FlightDatas first17 = new FlightDatas("东方航空","MU3597","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.01.18");
+        db.saveFlightDatas(first17);
 
-            final int childCount = parent.getChildCount();
-            for(int i= 0; i < childCount ; i++){
-                final View child = parent.getChildAt(i);
-                final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-                final int top = child.getBottom() + params.bottomMargin;
-                final int bottom = top + size ;
+        FlightDatas first18 = new FlightDatas("深圳航空","ZH1415","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.06.28");
+        db.saveFlightDatas(first18);
 
-                c.drawRect(left , top , right , bottom, paint);
-            }
-        }
+        FlightDatas first19 = new FlightDatas("四川航空","3U8882","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.06.17");
+        db.saveFlightDatas(first19);
+
+        FlightDatas first20 = new FlightDatas("东方航空","MU3561","北京", "上海", "8:06", "10:38",
+                "南昌", "2016.02.18");
+        db.saveFlightDatas(first20);
+
+        Toast.makeText(ActivityFlightBrowsing.this, "数据库生成完毕" , Toast.LENGTH_LONG).show();
     }
-
-    /**
-     * 自定义测试用初始化数据,实现SQLite后弃用
-     * */
-    private void initTestData() {
-        testData first = new testData("北京", "上海", "8:06", "10:38", "杭州");
-        testDataList.add(first);
-        testData second = new testData("深圳", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(second);
-        testData first3 = new testData("北京", "九龙", "14:06", "15:58", "长沙");
-        testDataList.add(first3);
-        testData first4 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first4);
-        testData first5 = new testData("西藏", "上海", "10:06", "10:38", "南昌");
-        testDataList.add(first5);
-        testData first6 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first6);
-        testData first7 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first7);
-        testData first8 = new testData("深圳", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first8);
-        testData first9 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first9);
-        testData first10 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first10);
-        testData first11 = new testData("西藏", "上海", "10:06", "10:38", "南昌");
-        testDataList.add(first11);
-        testData first12 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first12);
-        testData first13 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first13);
-        testData first14 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first14);
-        testData first15 = new testData("深圳", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first15);
-        testData first16 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first16);
-        testData first17 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first17);
-        testData first18 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first18);
-        testData first19 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first19);
-        testData first20 = new testData("北京", "上海", "8:06", "10:38", "南昌");
-        testDataList.add(first20);
-    }
-
-
-//    //测试数据适配器,适配于ListView
-//    public class testDataAdapter extends ArrayAdapter<testData>{
-//
-//        private int resourceId;
-//
-//    public testDataAdapter(Context context, int resource, List<com.shanshan.flightmanager.testData> objects) {
-//        super(context, resource, objects);
-//        resourceId = resource;
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        testData testData = getItem(position);//获取当前项testData的实例
-//        //优化getViee()
-//        View view;
-//        if ( convertView == null ){
-//            //将子项加载入布局
-//            view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-//        }else{
-//            view = convertView;
-//        }
-//        TextView dwhereFrom = (TextView) view.findViewById(R.id.where_from);
-//        TextView dwhereTo = (TextView) view.findViewById(R.id.where_to);
-//        TextView dtimeBegin = (TextView) view.findViewById(R.id.time_begin);
-//        TextView dtimeEnd = (TextView) view.findViewById(R.id.time_end);
-//        TextView dtransCity = (TextView) view.findViewById(R.id.trans_city);
-//        dwhereFrom.setText(testData.getWhereFrom());
-//        dwhereTo.setText(testData.getWhereTo());
-//        dtimeBegin.setText(testData.getTimeBegin());
-//        dtimeEnd.setText(testData.getTimeEnd());
-//        dtransCity.setText(testData.getTransCity());
-//        return view;
-//    }
-//}
 
 }
 

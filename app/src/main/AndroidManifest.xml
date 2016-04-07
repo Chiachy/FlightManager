@@ -26,9 +26,7 @@
         <activity
             android:name=".ActivityUserLogin"
             android:label="@string/title_activity_activity_user_login" />
-        <activity
-            android:name=".ActivityManagerView"
-            android:label="@string/title_activity_activity_manager_view"></activity>
+        <activity android:name=".ActivityManagerView"></activity>
     </application>
 
 </manifest>

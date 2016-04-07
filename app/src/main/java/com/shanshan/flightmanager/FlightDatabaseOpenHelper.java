@@ -15,8 +15,8 @@ public class FlightDatabaseOpenHelper extends SQLiteOpenHelper {
     * FlightDatas表建表语句
     */
     public static final String CREATE_DATAS = "create table FlightDatas(" +
-            "id integer primary key autoincrement," +
-            "company_id integer ," +
+            "id text primary key ," +
+            "company_id text ," +
             "flight_number text ," +
             "where_from text ," +
             "where_to text ," +
@@ -24,24 +24,42 @@ public class FlightDatabaseOpenHelper extends SQLiteOpenHelper {
             "time_end text ," +
             "trans_city text ," +
             "day text ," +
+            "isForigen text" +
             ") ";
 
-    private Context mContext;
+    public static final String CREATE_ORDER_TABLE = "create table OrderDatas(" +
+            "id integer primary key autoincrement," + //订单编号
+            "user_id text," +
+            "price integer," +
+            "flight_number text" +
+            ") ";
+
+    public static final String CREATE_USER_TABLE = "create table UserDatas(" +
+            "id text primary key," +
+            "password text," +
+            "name text," +
+            "sex text," +
+            "age integer," +
+            "balance integer" +
+            ") ";
+
 
     public FlightDatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        //mContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_DATAS);   //创建航班数据表
-        //Toast.makeText(mContext, "创建成功！", Toast.LENGTH_SHORT).show();
+        db.execSQL(CREATE_ORDER_TABLE);
+        db.execSQL(CREATE_USER_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL(CREATE_DATAS);   //创建航班数据表
+        db.execSQL(CREATE_ORDER_TABLE);
+        db.execSQL(CREATE_USER_TABLE);
     }
 }
 

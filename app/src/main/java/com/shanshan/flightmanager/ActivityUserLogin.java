@@ -4,59 +4,26 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.content.CursorLoader;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.Loader;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ActivityUserLogin extends Activity {
 
-import static android.Manifest.permission.READ_CONTACTS;
-
-/**
- * A login screen that offers login via email/password.
- */
-public class ActivityUserLogin extends Activity implements LoaderCallbacks<Cursor> {
-
-    //管理员密码
-    private static final String MANAGER_ACCOUNT = "manager@123" ;
-    private static final String MANAGER_PASSWORD = "123456" ;
-
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
-    private static final int REQUEST_READ_CONTACTS = 0;
-
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -68,22 +35,29 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
     private View mProgressView;
     private View mLoginFormView;
     private Toolbar mUserLoginToolbar;
-    public SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+    private TextView mSignUpTextView;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_user_login);
+        setContentView(R.layout.activity_user_login);
+        final FlightSystemApplication application = (FlightSystemApplication) getApplication();
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                    dialog = new ProgressDialog(ActivityUserLogin.this);
+                    dialog.setProgressStyle(R.attr.progressBarStyle);
+                    dialog.setMessage("加载中...");
+                    dialog.setIndeterminate(true);              //设置进度条是否为不明确
+                    dialog.setCancelable(false);                //设置进度条是否可以按退回键取消
+                    dialog.setCanceledOnTouchOutside(false);    //设置点击进度对话框外的区域对话框不消失
+                    dialog.show();
                     attemptLogin();
                     return true;
                 }
@@ -96,11 +70,6 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
             @Override
             public void onClick(View view) {
                 attemptLogin();
-               /* SharedPreferences.Editor editor = mSharedPreferences.edit();
-                editor.putString("name", mEmailView.getText().toString() );
-                editor.putString("password", mPasswordView.getText().toString() );
-                editor.commit();
-                finish();*/
             }
         });
 
@@ -109,54 +78,17 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
 
         //ToolBar方法实现
         mUserLoginToolbar = (Toolbar) findViewById(R.id.user_login_toolbar);
-        mUserLoginToolbar.setTitleTextColor(Color.parseColor("#e9e9e9"));
+        mUserLoginToolbar.setTitleTextColor(Color.parseColor("#ffffff"));
         setActionBar(mUserLoginToolbar);
 
-    }
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
-        getLoaderManager().initLoader(0, null, this);
-    }
-
-    private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
+        mSignUpTextView = (TextView) findViewById(R.id.sign_up );
+        mSignUpTextView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityUserLogin.this, ActivitySignUp.class));
             }
-        }
+        });
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -176,8 +108,7 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        //使用sharedPreferences
-        mSharedPreferences = this.getSharedPreferences("flight_data", MODE_PRIVATE);
+
 
         boolean cancel = false;
         View focusView = null;
@@ -200,16 +131,6 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
             cancel = true;
         }
 
-        // TODO: 2016/3/29  sharedPreference
-        if (mEmailView.equals(MANAGER_ACCOUNT) && mPasswordView.equals(MANAGER_PASSWORD)){
-            Intent intent = new Intent(ActivityUserLogin.this , ActivityManagerView.class);
-            startActivity(intent);
-        }else if (mEmailView.equals(mSharedPreferences.getString("name", "")) &&
-                mPasswordView.equals(mSharedPreferences.getString("password", ""))){
-            mEditor = mSharedPreferences.edit();
-            mEditor.commit();
-            finish();
-        }
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -226,7 +147,7 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
 
     private boolean isEmailValid(String email) {
 
-        return email.contains("@");
+        return email.contains("");
     }
 
     private boolean isPasswordValid(String password) {
@@ -270,60 +191,6 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
         }
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new CursorLoader(this,
-                // Retrieve data rows for the device user's 'profile' contact.
-                Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
-
-                // Select only email addresses.
-                ContactsContract.Contacts.Data.MIMETYPE +
-                        " = ?", new String[]{ContactsContract.CommonDataKinds.Email
-                .CONTENT_ITEM_TYPE},
-
-                // Show primary email addresses first. Note that there won't be
-                // a primary email address if the user hasn't specified one.
-                ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<>();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(ProfileQuery.ADDRESS));
-            cursor.moveToNext();
-        }
-
-        addEmailsToAutoComplete(emails);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
-        //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(ActivityUserLogin.this,
-                        android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setAdapter(adapter);
-    }
-
-
-    private interface ProfileQuery {
-        String[] PROJECTION = {
-                ContactsContract.CommonDataKinds.Email.ADDRESS,
-                ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
-        };
-
-        int ADDRESS = 0;
-        int IS_PRIMARY = 1;
-    }
-
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -332,6 +199,7 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
 
         private final String mEmail;
         private final String mPassword;
+        private UserDatas userDatas;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
@@ -349,16 +217,15 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            userDatas = FlightManagerDB.getInstance(ActivityUserLogin.this).searchUser(mEmail);
+            if (userDatas.getId() == null) {
+                return false;
+            } else if (userDatas.getPassword().equals(mPassword)) {
+                ActivityUserDetails.id = mEmail;
+                return true;
             }
-
             // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -368,6 +235,9 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
 
             if (success) {
                 finish();
+                final FlightSystemApplication application = (FlightSystemApplication) getApplication();
+                Toast.makeText(ActivityUserLogin.this, "登入成功", Toast.LENGTH_LONG ).show();
+                application.setIsLogin(true);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -378,6 +248,7 @@ public class ActivityUserLogin extends Activity implements LoaderCallbacks<Curso
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+            dialog.dismiss();
         }
     }
 }
