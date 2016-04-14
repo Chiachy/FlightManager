@@ -36,7 +36,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         //检查FlightDatas表是否存在
         FlightManagerDB mFlightDatabaseOpenHelper = FlightManagerDB
                 .getInstance(ActivityFlightBrowsing.this);
-        if(!mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }
+        if(mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }
 
         //绑定item的点击事件,并调用
         fbToolbar.setOnMenuItemClickListener( onMenuItemClickListener );
@@ -64,7 +64,6 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent  = new Intent(ActivityFlightBrowsing.this , ActivitySearch.class);
                 startActivity(intent);
-                //initFlightDatas4DB();
             }
         });
     }
@@ -85,7 +84,9 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()){
                 case R.id.action_sign_in: {
+
                     final FlightSystemApplication application = (FlightSystemApplication) getApplication();
+
                     if(!application.getIsLogin()){
                         startActivity(new Intent(
                                 ActivityFlightBrowsing.this , ActivityUserLogin.class)

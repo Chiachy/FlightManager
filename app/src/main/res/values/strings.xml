@@ -48,4 +48,11 @@
     <string name="activity_manager_view">管理员界面</string>
     <string name="menu_exit">退出管理员登陆</string>
 
+
+    <string name="fragment_managing_flight">fragment managing flight</string>
+
+    <string name="fragment_managing_user">fragment managing user</string>
+
+    <string name="fragment_managing_order">fragment managing order</string>
+
 </resources>

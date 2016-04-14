@@ -27,11 +27,11 @@
         <activity
             android:name=".ActivityUserLogin"
             android:label="@string/title_activity_activity_user_login" />
-        <activity android:name=".ActivityManagerView"></activity>
+        <activity android:name=".ActivityManagerView" />
         <activity android:name=".ActivityUserDetails" />
-        <activity android:name=".ActivitySignUp"></activity>
-        <activity android:name=".ActivitySearch"></activity>
-        <activity android:name=".ActivitySearchResult"></activity>
+        <activity android:name=".ActivitySignUp" />
+        <activity android:name=".ActivitySearch" />
+        <activity android:name=".ActivitySearchResult" />
     </application>
 
 </manifest>

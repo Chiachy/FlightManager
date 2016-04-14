@@ -3,7 +3,6 @@ package com.shanshan.flightmanager;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +39,6 @@ public class AdapterRecycleView extends RecyclerView.Adapter<RecyclerView.ViewHo
         ((MyViewHolder)holder).dtimeEnd.setText( mDatas.get(position).getTimeEnd());
         ((MyViewHolder)holder).dtransCity.setText( mDatas.get(position).getTransCity());
         ((MyViewHolder)holder).dDay.setText((mDatas.get(position).getDay()));
-        Log.i("DATA", mDatas.get(position).getDay() );
         ((MyViewHolder)holder).itemView.setTag(position);
     }
 

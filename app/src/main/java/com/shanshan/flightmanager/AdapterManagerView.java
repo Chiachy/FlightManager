@@ -7,6 +7,7 @@ import android.view.ViewGroup;
  * Created by Chiachi on 2016/4/7.
  */
 public class AdapterManagerView extends RecyclerView.Adapter {
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;
