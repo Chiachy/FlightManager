@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.shanshan.flightmanager.FragmentManagingUser">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textViewLableu"
+
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/fragment_managing_user" />
+        android:id="@+id/rv_managing_user" />
 
 </FrameLayout>

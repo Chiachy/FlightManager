@@ -1,55 +1,38 @@
 package com.shanshan.flightmanager;
 
-import android.net.Uri;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentManagingFlight.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentManagingFlight#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentManagingFlight extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "someInt";
     private static final String ARG_PARAM2 = "sometitle";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private int page;
     private String title;
 
-    private OnFragmentInteractionListener mListener;
+    private FragmentManagingUser.OnFragmentInteractionListener mListener;
+    private DialogFragment showNoticeDialog;
+
+    boolean mIsLargeLayout;
 
     public FragmentManagingFlight() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentManagingFlight.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentManagingFlight newInstance(int param1, String param2) {
         FragmentManagingFlight fragmentManagingFlight = new FragmentManagingFlight();
         Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
         args.putInt(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragmentManagingFlight.setArguments(args);
@@ -59,9 +42,12 @@ public class FragmentManagingFlight extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
             page = getArguments().getInt(ARG_PARAM1, 0);
             title = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -70,25 +56,106 @@ public class FragmentManagingFlight extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_managing_flight, container, false);
-        TextView textViewLabel = (TextView) view.findViewById(R.id.textViewLablef);
-        textViewLabel.setText(page + "--" + title);
+        Button addFlgihtBtn = (Button) view.findViewById(R.id.button_add);
+        Button updateFlightBtn = (Button) view.findViewById(R.id.update_flight);
+        Button deleteFlgihtBtn = (Button) view.findViewById(R.id.delete_flight);
+
+        addFlgihtBtn.setOnClickListener(addOnClickListener);
+        updateFlightBtn.setOnClickListener(updateOnClickListener);
+        deleteFlgihtBtn.setOnClickListener(deleteOnClickListener);
+
         return view;
     }
 
+    View.OnClickListener addOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showAddDialog();
+        }
+    };
+
+    View.OnClickListener updateOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showUpdateDialog();
+        }
+    };
+
+    View.OnClickListener deleteOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showDeleteDialog();
+        }
+    };
 
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
+    /*public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }*/
+
+    //dialog对话框
+    public class FlightAddDialog extends DialogFragment {
+
+        @NonNull //加了@NonNull后就显示出来了，棒！
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+
+            builder.setView(inflater.inflate(R.layout.dialog_flight_add, null))
+                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
+                            .OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO: 2016/4/17 新建航班信息后与数据库绑定
+                        }
+                    })
+                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
+                            .OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            FlightAddDialog.this.getDialog().cancel();
+                        }
+                    });
+
+            /*Dialog dialog = super.onCreateDialog(savedInstanceState);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);*/
+            return builder.create();
+        }
     }
+
+    public class FlightUpdateDialog extends DialogFragment {
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+
+
+            return super.onCreateDialog(savedInstanceState);
+        }
+    }
+
+    public void showAddDialog() {
+        FragmentManager fragmentManager = getFragmentManager();
+        DialogFragment dialogFragment = new FlightAddDialog();
+        dialogFragment.show(fragmentManager, "dialog");
+    }
+
+    public void showUpdateDialog() {
+        FragmentManager fragmentManager = getFragmentManager();
+        DialogFragment dialogFragment = new FlightAddDialog();
+        dialogFragment.show(fragmentManager, "dialog");
+    }
+
+    public void showDeleteDialog() {
+        FragmentManager fragmentManager = getFragmentManager();
+        DialogFragment dialogFragment = new FlightAddDialog();
+        dialogFragment.show(fragmentManager, "dialog");
+    }
+
+
 }
+

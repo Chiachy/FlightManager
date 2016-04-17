@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+        android:titleTextColor="#ffffff"
+        android:title="@string/maflight_title"
+        android:background="@color/skyBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/maflight_id"
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_companyid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/macompany_id" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_wherefrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maflight_wherefrom" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_whereto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maflight_whereto" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_timebegin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matime_begin" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_timeend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matime_end" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_transcity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matranscity" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maday" />
+
+
+</LinearLayout>

@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 
 /**
@@ -65,8 +64,8 @@ public class FragmentManagingUser extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_managing_user, container, false);
-        TextView textViewLableu = (TextView) view.findViewById(R.id.textViewLableu);
-        textViewLableu.setText(mParam1 + " -- " +mParam2);
+
+
         return view;
     }
 

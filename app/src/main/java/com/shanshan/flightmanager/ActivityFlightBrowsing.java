@@ -36,7 +36,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         //检查FlightDatas表是否存在
         FlightManagerDB mFlightDatabaseOpenHelper = FlightManagerDB
                 .getInstance(ActivityFlightBrowsing.this);
-        if(mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }
+        if(!mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }
 
         //绑定item的点击事件,并调用
         fbToolbar.setOnMenuItemClickListener( onMenuItemClickListener );
