@@ -1,46 +1,26 @@
 package com.shanshan.flightmanager;
 
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentManagingUser.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentManagingUser#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentManagingUser extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     public FragmentManagingUser() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentManagingUser.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentManagingUser newInstance(String param1, String param2) {
         FragmentManagingUser fragment = new FragmentManagingUser();
         Bundle args = new Bundle();
@@ -64,24 +44,125 @@ public class FragmentManagingUser extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_managing_user, container, false);
+        Button userAddBtn = (Button) view.findViewById(R.id.user_add);
+        Button userDeleteBtn = (Button) view.findViewById(R.id.user_delete);
 
-
+        userAddBtn.setOnClickListener(addUserDataOnClickListener);
         return view;
     }
 
+    View.OnClickListener addUserDataOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(getActivity(), ActivitySignUp.class));
+        }
+    };
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+/*
+    public void showAddDialog() {
+        FragmentManager fragmentManager = getFragmentManager();
+        DialogFragment dialogFragment = new UserAddDialog();
+        dialogFragment.show(fragmentManager, "dialog");
     }
+*/
+
+    /*public class UserAddDialog extends DialogFragment {
+
+        private EditText mAddNameEt;
+        private EditText mAddAccountEt;
+        private RadioGroup mAddGenderRdG;
+        private EditText mAddAgeEt;
+        private EditText mAddPasswordEt;
+        private EditText mAddPasswordConfirmEt;
+
+        *//*@Nullable
+        @Override
+        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                                 @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.dialog_user_add, container);
+
+            mAddNameBtn = (EditText) view.findViewById(R.id.user_add_name);
+            mAddAccountBtn = (EditText) view.findViewById(R.id.user_add_account);
+            mAddGenderRdG = (RadioGroup) view.findViewById(R.id.user_radio_gender);
+            mAddAgeBtn = (EditText) view.findViewById(R.id.user_add_age);
+            mAddPasswordBtn = (EditText) view.findViewById(R.id.user_add_password);
+            mAddPasswordConfirmBtn= (EditText) view.findViewById(R.id.user_add_password_comfirm);
+
+            return view;
+        }*//*
+
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_user_add,null);
+            mAddNameEt = (EditText) view.findViewById(R.id.user_add_name);
+            mAddAccountEt = (EditText) view.findViewById(R.id.user_add_account);
+            mAddGenderRdG = (RadioGroup) view.findViewById(R.id.user_radio_gender);
+            mAddAgeEt = (EditText) view.findViewById(R.id.user_add_age);
+            mAddPasswordEt = (EditText) view.findViewById(R.id.user_add_password);
+            mAddPasswordConfirmEt= (EditText) view.findViewById(R.id.user_add_password_comfirm);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+
+            builder.setView(inflater.inflate(R.layout.dialog_user_add, null))
+                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
+                            .OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_user_add,null);
+                            mAddNameEt = (EditText) view.findViewById(R.id.user_add_name);
+                            mAddAccountEt = (EditText) view.findViewById(R.id.user_add_account);
+                            mAddGenderRdG = (RadioGroup) view.findViewById(R.id.user_radio_gender);
+                            mAddAgeEt = (EditText) view.findViewById(R.id.user_add_age);
+                            mAddPasswordEt = (EditText) view.findViewById(R.id.user_add_password);
+                            mAddPasswordConfirmEt= (EditText) view.findViewById(R.id.user_add_password_comfirm);
+                            if(FlightManagerDB.getInstance(getActivity())
+                                    .searchUser(mAddAccountEt.getText().toString()).getId()==null) {
+                                Log.i("DATA-A", mAddAccountEt.getText().toString());
+                                if(mAddPasswordEt.getText().toString().length() >=6 ){
+                                    Log.i("DATA-P", mAddPasswordEt.getText().toString());
+                                    if(mAddPasswordEt.getText().toString().equals(
+                                            mAddPasswordConfirmEt.getText().toString())){
+                                        Log.i("DATA-PC", mAddPasswordConfirmEt.getText().toString());
+                                        UserDatas userDatas = new UserDatas();
+                                        userDatas.setId(mAddAccountEt.getText().toString());
+                                        userDatas.setPassword(mAddPasswordEt.getText().toString());
+                                        userDatas.setSex(mAddGenderRdG.getCheckedRadioButtonId()
+                                                == R.id.male ? "男":"女");
+                                        userDatas.setName(mAddNameEt.getText().toString());
+                                        userDatas.setAge(Integer.parseInt(mAddAgeEt.getText()
+                                                .toString()));
+                                        FlightManagerDB.getInstance(getActivity()).saveUser(userDatas);
+
+                                        Toast.makeText(getActivity(), "注册成功", Toast.LENGTH_LONG )
+                                                .show();
+                                    }else{
+                                        Toast.makeText(getActivity(), "密码不一致", Toast.LENGTH_LONG )
+                                                .show();
+                                    }
+                                }else{
+                                    Toast.makeText(getActivity(), "密码长度应至少六位",
+                                            Toast.LENGTH_LONG ).show();
+                                }
+                            }else{
+                                Toast.makeText(getActivity(), "此用户已被注册", Toast.LENGTH_LONG )
+                                        .show();
+                            }
+                        }
+                    })
+                    .setNegativeButton(R.string.dialog_negative_button,
+                            new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            UserAddDialog.this.getDialog().cancel();
+                        }
+                    });
+
+            return builder.create();
+        }
+    }*/
+
+
 }

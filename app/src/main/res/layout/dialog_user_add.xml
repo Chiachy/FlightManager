@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#f2f2f2"
     android:layout_width="match_parent"
-    android:background="#e8e8e8"
-    android:layout_height="match_parent"
-    tools:context="com.shanshan.flightmanager.ActivitySignUp">
+    android:layout_height="match_parent">
 
     <Toolbar
+        android:titleTextColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/sign_up_toolbar"
         android:background="@color/skyBlue"
-        android:title="用户注册" />
+        android:title="新增用户账号" />
 
     <LinearLayout
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/editText21"
+            android:id="@+id/user_add_name"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 
@@ -70,12 +70,9 @@
 
             <RadioGroup
                 android:orientation="horizontal"
-                android:id="@+id/radio"
+                android:id="@+id/user_radio_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
-
-
 
                 <RadioButton
                     android:id="@+id/male"
@@ -91,6 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RadioGroup>
+
         </android.support.v7.widget.LinearLayoutCompat>
 
 
@@ -106,7 +104,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText4" />
+            android:id="@+id/user_add_age" />
 
         <TextView
             android:layout_width="match_parent"
@@ -124,7 +122,7 @@
             android:inputType="textPassword"
             android:ems="10"
             android:hint=""
-            android:id="@+id/editText2"
+            android:id="@+id/user_add_password"
             android:layout_below="@+id/textView22"
             android:layout_alignParentStart="true" />
 
@@ -143,19 +141,11 @@
             android:inputType="textPassword"
             android:hint=""
             android:ems="10"
-            android:id="@+id/editText3"
+            android:id="@+id/user_add_password_comfirm"
             android:layout_below="@+id/textView23"
             android:layout_alignParentStart="true" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="注册"
-            android:id="@+id/sign_up_button" />
 
 
     </LinearLayout>
 
-
-
-</RelativeLayout>
+</LinearLayout>

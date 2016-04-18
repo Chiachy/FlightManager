@@ -61,11 +61,12 @@
     <string name="maflight_title">新建航班信息</string>
     <string name="dialog_positive_button">确认</string>
     <string name="dialog_negative_button">取消</string>
+    <string name="ma_update_title">更改航班信息</string>
+    <string name="ma_delete_tite">删除航班信息</string>
 
     <string name="fragment_managing_user">fragment managing user</string>
 
     <string name="fragment_managing_order">fragment managing order</string>
-
 
 
 </resources>

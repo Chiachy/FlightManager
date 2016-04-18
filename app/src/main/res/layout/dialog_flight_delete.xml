@@ -6,16 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <Toolbar
         android:titleTextColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/skyBlue"
-        android:title="@string/ma_update_title"/>
+        android:title="@string/ma_delete_tite"/>
 
+    <TextView
+        android:layout_marginTop="25dp"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请在此输入想要删除的航班号："
+        android:id="@+id/textView4" />
 
-
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText5" />
 
 
 </LinearLayout>

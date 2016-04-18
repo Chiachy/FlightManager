@@ -27,7 +27,7 @@ public class ActivitySignUp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        userId = (EditText) findViewById(R.id.editText);
+        userId = (EditText) findViewById(R.id.user_add_account);
         userPassword = (EditText) findViewById(R.id.editText2);
         passwordConfirm = (EditText) findViewById(R.id.editText3);
         signUp = (Button) findViewById(R.id.sign_up_button);
