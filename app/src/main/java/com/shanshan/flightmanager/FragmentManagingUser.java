@@ -48,6 +48,7 @@ public class FragmentManagingUser extends Fragment {
         Button userDeleteBtn = (Button) view.findViewById(R.id.user_delete);
 
         userAddBtn.setOnClickListener(addUserDataOnClickListener);
+        userDeleteBtn.setOnClickListener(deleteUserDataOnClickListener);
         return view;
     }
 
@@ -55,6 +56,13 @@ public class FragmentManagingUser extends Fragment {
         @Override
         public void onClick(View v) {
             startActivity(new Intent(getActivity(), ActivitySignUp.class));
+        }
+    };
+
+    View.OnClickListener deleteUserDataOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(getActivity(), DialogUserDelete.class));
         }
     };
 

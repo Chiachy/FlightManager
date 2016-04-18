@@ -1,6 +1,5 @@
 package com.shanshan.flightmanager;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,14 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentOrderManaging.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentOrderManaging#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentOrderManaging extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,8 +16,6 @@ public class FragmentOrderManaging extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     public FragmentOrderManaging() {
         // Required empty public constructor
@@ -63,13 +52,8 @@ public class FragmentOrderManaging extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order_managing, container, false);
-
         return view;
     }
 
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

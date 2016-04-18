@@ -19,7 +19,7 @@ tools:context="com.shanshan.flightmanager.FragmentOrderManaging">
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:text="查询订单信息"
-    android:id="@+id/user_add"
+    android:id="@+id/order_search"
     android:layout_gravity="center_horizontal" />
 
 <Button
@@ -27,7 +27,7 @@ tools:context="com.shanshan.flightmanager.FragmentOrderManaging">
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:text="删除订单信息"
-    android:id="@+id/user_delete"
+    android:id="@+id/order_delete"
     android:layout_gravity="center_horizontal" />
 
 

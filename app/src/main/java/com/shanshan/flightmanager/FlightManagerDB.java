@@ -225,6 +225,11 @@ public class FlightManagerDB {
         }
     }
 
+    public int deleteUserData(String id) {
+        String[] ids = {String.valueOf(id)};
+        return db.delete("UserDatas","id=?",ids);
+    }
+
     /**
      * 检查数据库表是否存在
      * @return true：数据库存在

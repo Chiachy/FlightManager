@@ -44,7 +44,7 @@ public class ActivitySignUp extends Activity {
             @Override
             public void onClick(View v) {
                 if(FlightManagerDB.getInstance(ActivitySignUp.this)
-                        .searchUser(userId.getText().toString()).getId()==null) {
+                        .searchUser(userId.getText().toString()).getId() == null) {
                     if(userPassword.getText().toString().length() >= 6){
                         if(userPassword.getText().toString().equals(passwordConfirm.getText()
                                 .toString())){
