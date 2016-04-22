@@ -65,128 +65,16 @@ public class FragmentManagingFlight extends Fragment {
     View.OnClickListener updateOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            startActivity(new Intent(getActivity(), DialogUpdateFlightData.class));
         }
     };
 
     View.OnClickListener deleteOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            startActivity(new Intent(getActivity(), DialogFlightDelete.class));
         }
     };
-
-
-
-    //dialog对话框
-    /*public class FlightAddDialog extends DialogFragment {
-
-        @NonNull //加了@NonNull后就显示出来了，棒！
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-            LayoutInflater inflater = getActivity().getLayoutInflater();
-
-            builder.setView(inflater.inflate(R.layout.dialog_flight_add, null))
-                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
-                            .OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    })
-                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
-                            .OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            FlightAddDialog.this.getDialog().cancel();
-                        }
-                    });
-
-            *//*Dialog dialog = super.onCreateDialog(savedInstanceState);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);*//*
-            return builder.create();
-        }
-    }
-
-    public class FlightUpdateDialog extends DialogFragment {
-
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-            LayoutInflater myInflater = getActivity().getLayoutInflater();
-
-            builder.setView(myInflater.inflate(R.layout.dialog_flight_update,null))
-                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
-                            .OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    })
-                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
-                            .OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            FlightUpdateDialog.this.getDialog().cancel();
-                        }
-                    });
-
-            return builder.create();
-        }
-    }*/
-
-    /*public class FlightDeleteDialog extends DialogFragment {
-
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-            LayoutInflater myInflater = getActivity().getLayoutInflater();
-
-            builder.setView(myInflater.inflate(R.layout.dialog_flight_delete,null))
-                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
-                            .OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    })
-                    .setPositiveButton(R.string.dialog_positive_button, new DialogInterface
-                            .OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            FlightDeleteDialog.this.getDialog().cancel();
-                        }
-                    });
-
-
-            return builder.create();
-        }
-    }
-
-    public void showAddDialog() {
-        FragmentManager fragmentManager = getFragmentManager();
-        DialogFragment dialogFragment = new FlightAddDialog();
-        dialogFragment.show(fragmentManager, "dialog");
-    }
-
-    public void showUpdateDialog() {
-        FragmentManager fragmentManager = getFragmentManager();
-        DialogFragment dialogFragment = new FlightUpdateDialog();
-        dialogFragment.show(fragmentManager, "dialog");
-    }
-
-    public void showDeleteDialog() {
-        FragmentManager fragmentManager = getFragmentManager();
-        DialogFragment dialogFragment = new FlightDeleteDialog();
-        dialogFragment.show(fragmentManager, "dialog");
-    }
-*/
 
 }
 

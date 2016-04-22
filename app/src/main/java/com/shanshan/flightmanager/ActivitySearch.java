@@ -34,8 +34,9 @@ public class ActivitySearch extends AppCompatActivity {
                 if (row.equals("")||row.contains(" ")) {
                     Toast.makeText(ActivitySearch.this,"请输入合法关键字",Toast.LENGTH_LONG).show();
                 } else {
-                    ActivitySearchResult.datases = FlightManagerDB.getInstance(ActivitySearch.this).searchFlight(searchEdit.getText().toString());
-                    Intent intent = new Intent(ActivitySearch.this,ActivitySearchResult.class);
+                    ActivitySearchResult.datases = FlightManagerDB.getInstance(ActivitySearch.this)
+                            .searchFlight(searchEdit.getText().toString());
+                    Intent intent = new Intent(ActivitySearch.this, ActivitySearchResult.class);
                     startActivity(intent);
                 }
             }

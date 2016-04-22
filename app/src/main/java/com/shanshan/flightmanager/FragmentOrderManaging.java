@@ -1,10 +1,12 @@
 package com.shanshan.flightmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 public class FragmentOrderManaging extends Fragment {
@@ -17,19 +19,11 @@ public class FragmentOrderManaging extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     public FragmentOrderManaging() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentOrderManaging.
-     */
-    // TODO: Rename and change types and number of parameters
     public static FragmentOrderManaging newInstance(String param1, String param2) {
         FragmentOrderManaging fragment = new FragmentOrderManaging();
         Bundle args = new Bundle();
@@ -48,12 +42,27 @@ public class FragmentOrderManaging extends Fragment {
         }
     }
 
+    private Button mOrderSearch;
+    private Button mOrderDelete;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_order_managing, container, false);
+
+        mOrderDelete = (Button) view.findViewById(R.id.order_delete);
+
+        mOrderDelete.setOnClickListener(deleteOnClickListener);
+
+
+
         return view;
     }
 
-
+    View.OnClickListener deleteOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            startActivity(new Intent(getActivity(), DialogOrderDelete.class));
+        }
+    };
 }

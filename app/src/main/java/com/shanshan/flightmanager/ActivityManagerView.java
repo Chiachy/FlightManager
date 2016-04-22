@@ -85,7 +85,7 @@ public class ActivityManagerView extends FragmentActivity {
                 case 1 :
                     return FragmentManagingUser.newInstance("1" , "Page Managing User");
                 case 2 :
-                    return FragmentManagingUser.newInstance("2" , "Page Managing Order");
+                    return FragmentOrderManaging.newInstance("2" , "Page Managing Order");
                 default:
                     return null;
             }

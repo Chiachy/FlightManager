@@ -9,26 +9,21 @@ tools:context="com.shanshan.flightmanager.FragmentOrderManaging">
 
 <TextView
     android:textSize="20dp"
-    android:layout_marginTop="100dp"
+    android:layout_marginTop="20dp"
     android:id="@+id/textViewLablef"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="请根据你需要的功能点击相应的按钮\n\n" />
 
-<Button
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:text="查询订单信息"
-    android:id="@+id/order_search"
-    android:layout_gravity="center_horizontal" />
-
-<Button
-    android:layout_marginTop="20dp"
+    <Button
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:text="删除订单信息"
     android:id="@+id/order_delete"
     android:layout_gravity="center_horizontal" />
 
+    <include
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        layout="@layout/activity_activity_for_recycler_view"/>
 
 </LinearLayout>

@@ -2,11 +2,12 @@ package com.shanshan.flightmanager;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class DialogFlightAdd extends Activity {
 
@@ -20,6 +21,7 @@ public class DialogFlightAdd extends Activity {
     private EditText mFlightDay;
     private Button mCancel;
     private Button mOkay;
+    private List<FlightDatas> mAFlightData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,70 +42,48 @@ public class DialogFlightAdd extends Activity {
         mOkay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(FlightManagerDB.getInstance(DialogFlightAdd.this)
-                        .searchFlight(mFlightId.getText().toString()) != null){
-                    if(!( mConpanyId.getText().toString().equals(null)
-                            || mWhereFrom.getText().toString().equals(null)
-                            || mTimeBegin.getText().toString().equals(null)
-                            || mWhereTo.getText().toString().equals(null)
-                            || mTimeEnd.getText().toString().equals(null)
-                            || mTranscity.getText().toString().equals(null)
-                            || mFlightDay.getText().toString().equals(null)
-                            || mCancel.getText().toString().equals(null)
-                            || mOkay.getText().toString().equals(null)
-                    )){
-                        FlightDatas flightDatas = new FlightDatas();
-                        Log.i("id",mConpanyId.getText().toString() );
+                String rowId = mFlightId.getText().toString();
+                mAFlightData = FlightManagerDB.getInstance(DialogFlightAdd.this)
+                        .searchFlight(rowId);
 
-                        flightDatas.setId(mFlightId.getText().toString());
-                        flightDatas.setCompanyId(mConpanyId.getText().toString());
-                        flightDatas.setWhereFrom(mWhereFrom.getText().toString());
-                        flightDatas.setWhereTo(mWhereTo.getText().toString());
-                        flightDatas.setTimeBegin(mTimeBegin.getText().toString());
-                        flightDatas.setTimeEnd(mTimeEnd.getText().toString());
-                        flightDatas.setDay(mFlightDay.getText().toString());
-                        Toast.makeText(DialogFlightAdd.this, "输入成功！",Toast.LENGTH_LONG).show();
-                        finish();
+                // TODO: 2016/4/20 判断是否存在该班次的语句
+                    if(mConpanyId.getText().toString().length() == 0
+                            || mWhereFrom.getText().toString().length() == 0
+                            || mWhereTo.getText().toString().length() == 0
+                            || mTimeBegin.getText().toString().length() == 0
+                            || mTimeEnd.getText().toString().length() == 0
+                            || mTranscity.getText().toString().length() == 0
+                            || mFlightDay.getText().toString().length() == 0
+                    ){
+                        Toast.makeText(DialogFlightAdd.this,"请输入完整的航班信息",Toast.LENGTH_LONG);
                     }else{
-                        Toast.makeText(DialogFlightAdd.this,"请完整填写航班信息！",Toast.LENGTH_LONG)
+                        String Id = new String(mFlightId.getText().toString());
+                        String cId = new String(mConpanyId.getText().toString());
+                        String wf = new String(mWhereFrom.getText().toString());
+                        String wt = new String(mWhereTo.getText().toString());
+                        String tb = new String(mTimeBegin.getText().toString());
+                        String te = new String(mTimeEnd.getText().toString());
+                        String tran = new String(mTranscity.getText().toString());
+                        String d = new String(mFlightDay.getText().toString());
+
+                        FlightDatas flightDatas = new FlightDatas(cId , Id , wf, wt, tb, te, tran, d);
+
+                        FlightManagerDB.getInstance(DialogFlightAdd.this).saveFlightDatas(flightDatas);
+
+                        Toast.makeText(DialogFlightAdd.this, "储存航班信息成功！", Toast.LENGTH_LONG)
                                 .show();
+                        finish();
                     }
-                }else{
-                    Toast.makeText(DialogFlightAdd.this,"该班次已存在！",Toast.LENGTH_LONG).show();
-                }
             }
         });
 
-
+        mCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
-/*if(FlightManagerDB.getInstance(DialogFlightAdd.this)
-                        .searchFlight(mFlightId.getText().toString()) == null){
-                    if(!( mConpanyId.getText().toString().equals(null)
-                            || mWhereFrom.getText().toString().equals(null)
-                            || mTimeBegin.getText().toString().equals(null)
-                            || mWhereTo.getText().toString().equals(null)
-                            || mTimeEnd.getText().toString().equals(null)
-                            || mTranscity.getText().toString().equals(null)
-                            || mFlightDay.getText().toString().equals(null)
-                            || mCancel.getText().toString().equals(null)
-                            || mOkay.getText().toString().equals(null)
-                    )){
-                        FlightDatas flightDatas = new FlightDatas();
-
-                        flightDatas.setId(mFlightId.getText().toString());
-                        flightDatas.setCompanyId(mConpanyId.getText().toString());
-                        flightDatas.setWhereFrom(mWhereFrom.getText().toString());
-                        flightDatas.setWhereTo(mWhereTo.getText().toString());
-                        flightDatas.setTimeBegin(mTimeBegin.getText().toString());
-                        flightDatas.setTimeEnd(mTimeEnd.getText().toString());
-                        flightDatas.setDay(mFlightDay.getText().toString());
-                        Toast.makeText(DialogFlightAdd.this, "输入成功！",Toast.LENGTH_LONG);
-                        finish();
-                    }else{
-                        Toast.makeText(DialogFlightAdd.this,"请完整填写航班信息！",Toast.LENGTH_LONG);
-                    }
-                }else{
-                    Toast.makeText(DialogFlightAdd.this,"该班次已存在！",Toast.LENGTH_LONG);
-                }*/
 }
+

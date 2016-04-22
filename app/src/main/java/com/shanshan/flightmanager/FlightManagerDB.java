@@ -117,6 +117,16 @@ public class FlightManagerDB {
     }
 
     /**
+     *
+     * @param id
+     * @return
+     */
+    public int deleteFlightData(String id) {
+        String[] ids = {id};
+        return db.delete("FlightDatas","id=?",ids);
+    }
+
+    /**
      * 订单数据
      * @param userId
      * @return
@@ -182,8 +192,8 @@ public class FlightManagerDB {
      * @param id 订单id
      * @return  删除结果
      */
-    public int deleteOrderData(int id) {
-        String[] ids = {String.valueOf(id)};
+    public int deleteOrderData(String id) {
+        String[] ids = {id};
         return db.delete("OrderDatas","id=?",ids);
     }
 
@@ -226,7 +236,7 @@ public class FlightManagerDB {
     }
 
     public int deleteUserData(String id) {
-        String[] ids = {String.valueOf(id)};
+        String[] ids = {id};
         return db.delete("UserDatas","id=?",ids);
     }
 

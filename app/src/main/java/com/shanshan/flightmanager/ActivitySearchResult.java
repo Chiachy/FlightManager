@@ -32,10 +32,14 @@ public class ActivitySearchResult extends AppCompatActivity {
         mToolbar.setTitleTextColor(Color.parseColor("#ffffff"));
 
         resultList = (RecyclerView) findViewById(R.id.result_list);
+
         linearLayoutManager = new LinearLayoutManager(this);
+
         resultList.setLayoutManager(linearLayoutManager);
+
         adapter = new AdapterSearchResult(this,datases);
         resultList.setAdapter(adapter);
+
         if (datases.size() > 0) {
             TextView textView = (TextView) findViewById(R.id.result_text);
             textView.setVisibility(View.GONE);

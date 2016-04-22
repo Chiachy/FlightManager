@@ -33,7 +33,12 @@
         <activity android:name=".ActivitySearch" />
         <activity android:name=".ActivitySearchResult" />
         <activity android:name=".DialogFlightAdd" />
-        <activity android:name=".DialogUserDelete"></activity>
+        <activity android:name=".DialogUserDelete" />
+        <activity android:name=".DialogOrderDelete" />
+        <activity android:name=".DialogFlightDelete" />
+        <activity android:name=".DialogOrderSearch" />
+        <activity android:name=".DialogUpdateFlightData" />
+        <activity android:name=".ActivityForRecyclerView"></activity>
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ public class FlightDatas {
     private String day ;
     private String isForigen;
 
+
     public FlightDatas() {}
 
     public FlightDatas(String companyId, String id ,String whereFrom, String whereTo,
@@ -28,20 +29,20 @@ public class FlightDatas {
         this.day = day;
     }
 
-    public String getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId;
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
     }
 
     public String getWhereFrom() {
