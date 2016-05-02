@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="请输入被删除的账户名："
-            android:id="@+id/textView24"
             android:layout_gravity="center_horizontal" />
 
         <EditText

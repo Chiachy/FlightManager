@@ -25,8 +25,7 @@
             android:textSize="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="请在此输入想要删除的航班号"
-            android:id="@+id/textView4" />
+            android:text="请在此输入想要删除的航班号" />
 
         <EditText
             android:layout_margin="@dimen/activity_vertical_margin"
@@ -48,7 +47,6 @@
     <RelativeLayout
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:id="@+id/dialog_order_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

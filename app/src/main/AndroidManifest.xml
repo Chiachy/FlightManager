@@ -8,19 +8,14 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+
         android:name=".FlightSystemApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityFlightBrowsing">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ActivityFlightBrowsing"></activity>
         <activity
             android:name=".ActivityFlightDetails"
             android:label="@string/title_activity_activity_flight_details" />
@@ -38,7 +33,15 @@
         <activity android:name=".DialogFlightDelete" />
         <activity android:name=".DialogOrderSearch" />
         <activity android:name=".DialogUpdateFlightData" />
-        <activity android:name=".ActivityForRecyclerView"></activity>
+        <activity android:name=".ActivityForRecyclerView" />
+        <activity android:name=".ActivityBooking">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ActivityManagerViewNew"></activity>
     </application>
 
 </manifest>

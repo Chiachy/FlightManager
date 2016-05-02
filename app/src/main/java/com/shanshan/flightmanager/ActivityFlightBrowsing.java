@@ -3,13 +3,11 @@ package com.shanshan.flightmanager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -19,9 +17,38 @@ import android.widget.Toolbar;
  * */
 public class ActivityFlightBrowsing extends AppCompatActivity {
 
-    private FloatingActionButton flightBroChooseButton;
+    //private FloatingActionButton flightBroChooseButton;
     private RecyclerView userListView;
     private AdapterRecycleView mAdapter;
+    /*
+     *  设置menu item的监听器
+     */
+    private Toolbar.OnMenuItemClickListener onMenuItemClickListener =
+            new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.action_sign_in: {
+
+                    final FlightSystemApplication application = (FlightSystemApplication) getApplication();
+
+                    if(!application.getIsLogin()){
+                        startActivity(new Intent(
+                                ActivityFlightBrowsing.this , ActivityUserLogin.class)
+                        );
+                    }else{
+                        startActivity(new Intent(
+                                ActivityFlightBrowsing.this , ActivityUserDetails.class)
+                        );
+                    }
+                    break;
+                }
+                default:
+                    break;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +85,14 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         recycViewDividerLine.setColor(0xFFDDDDDD);
         userListView.addItemDecoration(recycViewDividerLine);
 
-        flightBroChooseButton = (FloatingActionButton) findViewById(R.id.flight_bro_choose_button);
-        flightBroChooseButton.setOnClickListener(new View.OnClickListener() {
+        //flightBroChooseButton = (FloatingActionButton) findViewById(R.id.flight_bro_choose_button);
+        /*flightBroChooseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent  = new Intent(ActivityFlightBrowsing.this , ActivitySearch.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     /**
@@ -74,36 +101,6 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
     private void initViews() {
         userListView = (RecyclerView) findViewById(R.id.userlistView);
     }
-
-    /*
-     *  设置menu item的监听器
-     */
-    private Toolbar.OnMenuItemClickListener onMenuItemClickListener =
-            new Toolbar.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            switch (item.getItemId()){
-                case R.id.action_sign_in: {
-
-                    final FlightSystemApplication application = (FlightSystemApplication) getApplication();
-
-                    if(!application.getIsLogin()){
-                        startActivity(new Intent(
-                                ActivityFlightBrowsing.this , ActivityUserLogin.class)
-                        );
-                    }else{
-                        startActivity(new Intent(
-                                ActivityFlightBrowsing.this , ActivityUserDetails.class)
-                        );
-                    }
-                    break;
-                }
-                default:
-                    break;
-            }
-            return false;
-        }
-    };
 
     /*
      * 此方法用于初始化菜单，其中menu参数就是即将要显示的Menu实例。

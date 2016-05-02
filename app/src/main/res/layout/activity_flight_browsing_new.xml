@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+
+        android:id="@+id/new_toolbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/skyBlue"
+        android:title="机票预订"
+        android:titleTextColor="#ffffff" />
+
+    <com.shanshan.flightmanager.SlidingTabLayout
+        android:layout_below="@id/new_toolbar_view"
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sliding_tabs"
+        layout="@layout/tab_search_browsing" />
+
+    <!--<android.support.v4.view.ViewPager
+        android:layout_below="@id/sliding_tabs"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />-->
+
+
+
+
+    RelativeLayout
+        android:layout_below="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/new_search_button"
+        android:layout_alignEnd="@+id/linearLayout">
+
+        TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="出发日期："
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        TextView
+            android:id="@+id/new_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView33"
+            android:layout_toEndOf="@+id/textView33"
+            android:text="2016"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        TextView
+            android:id="@+id/textView35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="起飞时间："
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@+id/textView33"
+            android:layout_alignStart="@+id/textView33" />
+
+        TextView
+            android:id="@+id/new_flight_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView35"
+            android:layout_toEndOf="@+id/textView35"
+            android:text="待输入"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        TextView
+            android:id="@+id/new_time_begin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView35"
+            android:layout_toEndOf="@+id/new_day"
+            android:text="4"
+            android:paddingLeft="8dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        TextView
+            android:text="29"
+            android:id="@+id/new_time_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/new_time_begin"
+            android:layout_toEndOf="@+id/new_time_begin"
+            android:paddingLeft="8dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:text="到达时间："
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_below="@+id/textView35"
+            android:layout_alignStart="@+id/textView35" />
+
+        TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="待输入"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_alignTop="@+id/textView4"
+            android:layout_toEndOf="@+id/textView4" />
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

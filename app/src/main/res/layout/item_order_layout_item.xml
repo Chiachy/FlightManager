@@ -10,7 +10,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="订单编号"
-        android:id="@+id/textView29"
         android:layout_gravity="center_vertical" />
 
     <TextView
@@ -25,7 +24,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="用户编号"
-        android:id="@+id/textView30"
         android:layout_gravity="center_vertical" />
 
     <TextView
@@ -41,7 +39,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="航班编号"
-        android:id="@+id/textView31"
         android:layout_gravity="center_vertical" />
 
     <TextView
