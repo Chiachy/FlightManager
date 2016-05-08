@@ -39,8 +39,8 @@ public class ActivityBooking extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_sign_in: {
-                        final FlightSystemApplication application =
-                                (FlightSystemApplication) getApplication();
+                        final FlightManagerApplication application =
+                                (FlightManagerApplication) getApplication();
                         if (!application.getIsLogin()) {
                             startActivity(new Intent(
                                     ActivityBooking.this, ActivityUserLogin.class)

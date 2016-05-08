@@ -27,11 +27,11 @@ public class DialogFlightDelete extends Activity {
     View.OnClickListener deleteFlightOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(FlightManagerDB.getInstance(DialogFlightDelete.this).searchUser(mEditText.getText()
+            if (DataBaseModel.getInstance(DialogFlightDelete.this).searchUser(mEditText.getText()
                     .toString()).getId() == null ){
-                FlightManagerDB.getInstance(DialogFlightDelete.this).deleteFlightData(mEditText
+                DataBaseModel.getInstance(DialogFlightDelete.this).deleteFlightData(mEditText
                         .getText().toString());
-                Log.i("FlightManagerDB", String.valueOf(FlightManagerDB
+                Log.i("DataBaseModel", String.valueOf(DataBaseModel
                         .getInstance(DialogFlightDelete.this)
                         .deleteFlightData(mEditText.getText().toString())) );
                 Toast.makeText( DialogFlightDelete.this, "该班次已删除", Toast.LENGTH_LONG ).show();

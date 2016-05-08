@@ -4,13 +4,13 @@ package com.shanshan.flightmanager;
 /**
  * Created by Shakugan on 16/4/3.
  */
-public class UserDatas {
+public class ManagerUserDatas {
 
     private String id;
     private String password;
     private String name;
     private String sex;
-    private int age;
+    private String age;
     private int balance;
 
     public String getId() {
@@ -45,11 +45,11 @@ public class UserDatas {
         this.sex = sex;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

@@ -21,7 +21,7 @@ public class ActivitySearchResult extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView resultList;
     private AdapterSearchResult adapter;
-    public static List<FlightDatas> datases = new ArrayList<>();
+    public static List<ManagerFlightDatas> datases = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

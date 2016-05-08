@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 
 public class FragmentManagingUser extends Fragment {
@@ -44,11 +43,8 @@ public class FragmentManagingUser extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_managing_user, container, false);
-        Button userAddBtn = (Button) view.findViewById(R.id.user_add);
-        Button userDeleteBtn = (Button) view.findViewById(R.id.user_delete);
 
-        userAddBtn.setOnClickListener(addUserDataOnClickListener);
-        userDeleteBtn.setOnClickListener(deleteUserDataOnClickListener);
+
         return view;
     }
 
@@ -126,7 +122,7 @@ public class FragmentManagingUser extends Fragment {
                             mAddAgeEt = (EditText) view.findViewById(R.id.user_add_age);
                             mAddPasswordEt = (EditText) view.findViewById(R.id.user_add_password);
                             mAddPasswordConfirmEt= (EditText) view.findViewById(R.id.user_add_password_comfirm);
-                            if(FlightManagerDB.getInstance(getActivity())
+                            if(DataBaseModel.getInstance(getActivity())
                                     .searchUser(mAddAccountEt.getText().toString()).getId()==null) {
                                 Log.i("DATA-A", mAddAccountEt.getText().toString());
                                 if(mAddPasswordEt.getText().toString().length() >=6 ){
@@ -134,7 +130,7 @@ public class FragmentManagingUser extends Fragment {
                                     if(mAddPasswordEt.getText().toString().equals(
                                             mAddPasswordConfirmEt.getText().toString())){
                                         Log.i("DATA-PC", mAddPasswordConfirmEt.getText().toString());
-                                        UserDatas userDatas = new UserDatas();
+                                        ManagerUserDatas userDatas = new ManagerUserDatas();
                                         userDatas.setId(mAddAccountEt.getText().toString());
                                         userDatas.setPassword(mAddPasswordEt.getText().toString());
                                         userDatas.setSex(mAddGenderRdG.getCheckedRadioButtonId()
@@ -142,7 +138,7 @@ public class FragmentManagingUser extends Fragment {
                                         userDatas.setName(mAddNameEt.getText().toString());
                                         userDatas.setAge(Integer.parseInt(mAddAgeEt.getText()
                                                 .toString()));
-                                        FlightManagerDB.getInstance(getActivity()).saveUser(userDatas);
+                                        DataBaseModel.getInstance(getActivity()).saveUser(userDatas);
 
                                         Toast.makeText(getActivity(), "注册成功", Toast.LENGTH_LONG )
                                                 .show();

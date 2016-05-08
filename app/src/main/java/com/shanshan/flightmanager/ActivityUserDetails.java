@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ActivityUserDetails extends Activity {
 
-    final FlightSystemApplication application = (FlightSystemApplication) getApplication();
+    final FlightManagerApplication application = (FlightManagerApplication) getApplication();
 
     private RecyclerView mRecyclerView;
     private OrderAdapter orderAdapter;
@@ -26,7 +26,7 @@ public class ActivityUserDetails extends Activity {
     private Toolbar mToolbar;
 
     public static String id;
-    private UserDatas userDatas;
+    private ManagerUserDatas managerUserDatas;
     private TextView name;
     private TextView userId;
     private TextView sex;
@@ -36,19 +36,19 @@ public class ActivityUserDetails extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
-        userDatas = FlightManagerDB.getInstance(this).searchUser(id);
+        managerUserDatas = DataBaseModel.getInstance(this).searchUser(id);
         name = (TextView) findViewById(R.id.user_name);
         userId = (TextView) findViewById(R.id.user_id);
         sex = (TextView) findViewById(R.id.user_sex);
         age = (TextView) findViewById(R.id.user_age);
-        name.setText(userDatas.getName());
-        if (userDatas.getSex().equals("男")) {
+        name.setText(managerUserDatas.getName());
+        if (managerUserDatas.getSex().equals("男")) {
             sex.setText("先生");
         } else {
             sex.setText("女士");
         }
-        userId.setText(userDatas.getId());
-        age.setText(String.valueOf(userDatas.getAge()));
+        userId.setText(managerUserDatas.getId());
+        age.setText(String.valueOf(managerUserDatas.getAge()));
 
         mButton = (Button) findViewById(R.id.exit_login);
         mButton.setOnClickListener(new View.OnClickListener() {
@@ -72,11 +72,11 @@ public class ActivityUserDetails extends Activity {
 
         mRecyclerView.setHasFixedSize(true);//提高性能
 
-        orderAdapter = new OrderAdapter(this, FlightManagerDB.getInstance(this)
-                .searchOrderDatas(userDatas.getId()));
+        orderAdapter = new OrderAdapter(this, DataBaseModel.getInstance(this)
+                .searchOrderDatas(managerUserDatas.getId()));
 
-        RecyclerViewDividerLine recycViewDividerLine =
-                new RecyclerViewDividerLine(RecyclerViewDividerLine.HORIZONTAL);
+        ToolsRecyclerViewDividerLine recycViewDividerLine =
+                new ToolsRecyclerViewDividerLine(ToolsRecyclerViewDividerLine.HORIZONTAL);
 
         recycViewDividerLine.setSize(5);
 
@@ -99,11 +99,11 @@ public class ActivityUserDetails extends Activity {
 
     private class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-        private List<OrderDatas> orderDatasList = new ArrayList<>();
+        private List<ManagerOrderDatas> orderDatasList = new ArrayList<>();
         private Context context;
         private LayoutInflater inflater;
 
-        public OrderAdapter(Context context,List<OrderDatas> datasList) {
+        public OrderAdapter(Context context, List<ManagerOrderDatas> datasList) {
             orderDatasList = datasList;
             this.context = context;
             inflater = LayoutInflater.from(context);

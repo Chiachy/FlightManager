@@ -15,7 +15,7 @@ public class AdapterManagerView extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private LayoutInflater mInflater;
     private Context context;
-    private static List<OrderDatas> orderDatasList = new ArrayList<>();
+    private static List<ManagerOrderDatas> orderDatasList = new ArrayList<>();
 
     //public AdapterManagerView
 

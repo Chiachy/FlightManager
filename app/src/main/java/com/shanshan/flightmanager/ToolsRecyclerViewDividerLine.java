@@ -13,7 +13,7 @@ import android.view.View;
 /**
  * RecycleView 分割线装饰类
  */
-public class RecyclerViewDividerLine extends RecyclerView.ItemDecoration {
+public class ToolsRecyclerViewDividerLine extends RecyclerView.ItemDecoration {
 
     public static final int HORIZONTAL = LinearLayoutManager.HORIZONTAL;
 
@@ -28,11 +28,11 @@ public class RecyclerViewDividerLine extends RecyclerView.ItemDecoration {
     private int size;//分割线尺寸
 
     //分割线尺寸
-    public RecyclerViewDividerLine(){
+    public ToolsRecyclerViewDividerLine() {
         this(VERTICAL);
     }
 
-    public RecyclerViewDividerLine(int orientation){
+    public ToolsRecyclerViewDividerLine(int orientation) {
         this.orientation = orientation;
         paint = new Paint();
     }

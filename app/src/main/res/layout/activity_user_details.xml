@@ -12,7 +12,7 @@
         android:textColor="@color/skyBlueDark"
         android:textSize="35sp"
         android:id="@+id/user_name"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/user_details_toolbar"
         android:layout_alignParentStart="true" />
@@ -40,7 +40,10 @@
         android:layout_toEndOf="@+id/age" />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="4dp"
         android:id="@+id/user_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,6 +53,9 @@
     </android.support.v7.widget.RecyclerView>
 
     <Button
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/white"
+        android:background="@color/skyBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="退出登录"
@@ -63,8 +69,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="用户名："
         android:id="@+id/textView21"
-        android:layout_above="@+id/age"
-        android:layout_alignStart="@+id/exit_login" />
+        android:layout_marginStart="31dp"
+        android:layout_alignTop="@+id/user_sex"
+        android:layout_alignStart="@+id/list_info" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,5 +90,15 @@
         android:layout_alignTop="@+id/user_details"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="65dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="先 生"
+        android:id="@+id/user_sex"
+        android:layout_alignBottom="@+id/user_name"
+        android:layout_toEndOf="@+id/user_name"
+        android:layout_marginStart="8dp" />
 
 </RelativeLayout>

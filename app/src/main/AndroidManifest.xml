@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".FlightSystemApplication"
+        android:name=".FlightManagerApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
@@ -32,7 +32,7 @@
         <activity android:name=".DialogFlightDelete" />
         <activity android:name=".DialogOrderSearch" />
         <activity android:name=".DialogUpdateFlightData" />
-        <activity android:name=".ActivityForRecyclerView" />
+        <activity android:name=".RecviewActivityOrderManaging" />
         <activity android:name=".ActivityBooking" />
         <activity android:name=".ActivityManagerViewNew" />
         <activity
@@ -40,9 +40,12 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RecviewActivityFlightManaging" />
+        <activity android:name=".RecviewActivityUserManaging"></activity>
     </application>
 
 </manifest>

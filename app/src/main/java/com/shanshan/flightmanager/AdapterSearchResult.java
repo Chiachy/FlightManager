@@ -15,10 +15,10 @@ public class AdapterSearchResult extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private LayoutInflater mInflater;
     private Context mContext;
-    public static List<FlightDatas> mDatas = new ArrayList<>();
-//    private FlightDatas mFlightDatas;
+    public static List<ManagerFlightDatas> mDatas = new ArrayList<>();
+//    private ManagerFlightDatas mFlightDatas;
 
-    public AdapterSearchResult(Context context, List<FlightDatas> mDatas){
+    public AdapterSearchResult(Context context, List<ManagerFlightDatas> mDatas) {
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);

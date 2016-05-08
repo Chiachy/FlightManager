@@ -3,18 +3,18 @@ package com.shanshan.flightmanager;
 /**
  * Created by shanshan on 2016/4/4.
  */
-public class OrderDatas {
+public class ManagerOrderDatas {
 
     private int id;
     private String userId;
     private String flight_number;
     private int price;
 
-    public OrderDatas() {
+    public ManagerOrderDatas() {
 
     }
 
-    public OrderDatas(String userId,String flight_number,int price) {
+    public ManagerOrderDatas(String userId, String flight_number, int price) {
         this.userId = userId;
         this.flight_number = flight_number;
         this.price = price;

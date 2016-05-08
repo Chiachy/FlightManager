@@ -9,12 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  *
  * 这是一个数据库操作辅助类
  */
-public class FlightDatabaseOpenHelper extends SQLiteOpenHelper {
+public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     /*
     * FlightDatas表建表语句
     */
-    public static final String CREATE_DATAS = "create table FlightDatas(" +
+    public static final String CREATE_DATAS = "create table ManagerFlightDatas(" +
             "id text primary key ," +
             "company_id text ," +
             "flight_number text ," +
@@ -27,24 +27,24 @@ public class FlightDatabaseOpenHelper extends SQLiteOpenHelper {
             "isForigen text" +
             ") ";
 
-    public static final String CREATE_ORDER_TABLE = "create table OrderDatas(" +
+    public static final String CREATE_ORDER_TABLE = "create table ManagerOrderDatas(" +
             "id integer primary key autoincrement," + //订单编号
             "user_id text," +
             "price integer," +
             "flight_number text" +
             ") ";
 
-    public static final String CREATE_USER_TABLE = "create table UserDatas(" +
+    public static final String CREATE_USER_TABLE = "create table ManagerUserDatas(" +
             "id text primary key," +
             "password text," +
             "name text," +
             "sex text," +
-            "age integer," +
+            "age text," +
             "balance integer" +
             ") ";
 
 
-    public FlightDatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

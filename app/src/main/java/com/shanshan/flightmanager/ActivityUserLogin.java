@@ -211,7 +211,7 @@ public class ActivityUserLogin extends Activity {
 
         private final String mEmail;
         private final String mPassword;
-        private UserDatas userDatas;
+        private ManagerUserDatas managerUserDatas;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
@@ -229,10 +229,10 @@ public class ActivityUserLogin extends Activity {
                 return false;
             }
 
-            userDatas = FlightManagerDB.getInstance(ActivityUserLogin.this).searchUser(mEmail);
-            if (userDatas.getId() == null) {
+            managerUserDatas = DataBaseModel.getInstance(ActivityUserLogin.this).searchUser(mEmail);
+            if (managerUserDatas.getId() == null) {
                 return false;
-            } else if (userDatas.getPassword().equals(mPassword)) {
+            } else if (managerUserDatas.getPassword().equals(mPassword)) {
                 ActivityUserDetails.id = mEmail;
                 return true;
             }
@@ -248,7 +248,7 @@ public class ActivityUserLogin extends Activity {
             if (success) {
                 finish();
                 Toast.makeText(ActivityUserLogin.this, "登入成功", Toast.LENGTH_LONG ).show();
-                final FlightSystemApplication application = (FlightSystemApplication) getApplication();
+                final FlightManagerApplication application = (FlightManagerApplication) getApplication();
                 application.setIsLogin(true);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

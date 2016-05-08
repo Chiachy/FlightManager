@@ -33,9 +33,9 @@ public class DialogUserDelete extends Activity {
     View.OnClickListener userDeleteOnCLiser = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(FlightManagerDB.getInstance(DialogUserDelete.this).searchUser(mUserdeleteEd
+            if (DataBaseModel.getInstance(DialogUserDelete.this).searchUser(mUserdeleteEd
                     .getText().toString()).getId() == null){
-                FlightManagerDB.getInstance(DialogUserDelete.this).deleteUserData(mUserdeleteEd
+                DataBaseModel.getInstance(DialogUserDelete.this).deleteUserData(mUserdeleteEd
                         .getText().toString());
                 Toast.makeText(DialogUserDelete.this, "账户已被删除", Toast.LENGTH_LONG).show();
             }else{

@@ -18,9 +18,9 @@ public class AdapterOrderManagering extends RecyclerView.Adapter<RecyclerView.Vi
 
     private LayoutInflater mInflater;
     private Context mContext;
-    public static List<OrderDatas> mDatas = new ArrayList<>();
+    public static List<ManagerOrderDatas> mDatas = new ArrayList<>();
 
-    public AdapterOrderManagering(Context context, List<OrderDatas> mDatas){
+    public AdapterOrderManagering(Context context, List<ManagerOrderDatas> mDatas) {
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);

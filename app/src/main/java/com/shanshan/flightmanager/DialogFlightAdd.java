@@ -21,7 +21,7 @@ public class DialogFlightAdd extends Activity {
     private EditText mFlightDay;
     private Button mCancel;
     private Button mOkay;
-    private List<FlightDatas> mAFlightData;
+    private List<ManagerFlightDatas> mAFlightData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class DialogFlightAdd extends Activity {
             @Override
             public void onClick(View v) {
                 String rowId = mFlightId.getText().toString();
-                mAFlightData = FlightManagerDB.getInstance(DialogFlightAdd.this)
+                mAFlightData = DataBaseModel.getInstance(DialogFlightAdd.this)
                         .searchFlight(rowId);
 
                 // TODO: 2016/4/20 判断是否存在该班次的语句
@@ -66,9 +66,9 @@ public class DialogFlightAdd extends Activity {
                         String tran = new String(mTranscity.getText().toString());
                         String d = new String(mFlightDay.getText().toString());
 
-                        FlightDatas flightDatas = new FlightDatas(cId , Id , wf, wt, tb, te, tran, d);
+                        ManagerFlightDatas managerFlightDatas = new ManagerFlightDatas(cId, Id, wf, wt, tb, te, tran, d);
 
-                        FlightManagerDB.getInstance(DialogFlightAdd.this).saveFlightDatas(flightDatas);
+                        DataBaseModel.getInstance(DialogFlightAdd.this).saveFlightDatas(managerFlightDatas);
 
                         Toast.makeText(DialogFlightAdd.this, "储存航班信息成功！", Toast.LENGTH_LONG)
                                 .show();

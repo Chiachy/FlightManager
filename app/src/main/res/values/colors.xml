@@ -11,5 +11,6 @@
     <color name="blueDark">#1b2774</color>
     <color name="skyBlue">#0090ff</color>
     <color name="skyBlueDark">#006abb</color>
+    <color name="white">#ffffff</color>
 
 </resources>

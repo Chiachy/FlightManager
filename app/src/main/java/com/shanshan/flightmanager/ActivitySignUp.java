@@ -43,20 +43,19 @@ public class ActivitySignUp extends Activity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(FlightManagerDB.getInstance(ActivitySignUp.this)
+                if (DataBaseModel.getInstance(ActivitySignUp.this)
                         .searchUser(userId.getText().toString()).getId() == null) {
                     if(userPassword.getText().toString().length() >= 6){
                         if(userPassword.getText().toString().equals(passwordConfirm.getText()
                                 .toString())){
-                            UserDatas userDatas = new UserDatas();
-
-                            userDatas.setId(userId.getText().toString());
-                            userDatas.setPassword(userPassword.getText().toString());
-                            userDatas.setSex(mRadioGroup.getCheckedRadioButtonId()
+                            ManagerUserDatas managerUserDatas = new ManagerUserDatas();
+                            managerUserDatas.setId(userId.getText().toString());
+                            managerUserDatas.setPassword(userPassword.getText().toString());
+                            managerUserDatas.setSex(mRadioGroup.getCheckedRadioButtonId()
                                     == R.id.male ? "男":"女");
-                            userDatas.setName(userName.getText().toString());
-                            userDatas.setAge(Integer.parseInt(userAge.getText().toString()));
-                            FlightManagerDB.getInstance(ActivitySignUp.this).saveUser(userDatas);
+                            managerUserDatas.setName(userName.getText().toString());
+                            managerUserDatas.setAge(userAge.getText().toString());
+                            DataBaseModel.getInstance(ActivitySignUp.this).saveUser(managerUserDatas);
                             Toast.makeText(ActivitySignUp.this, "注册成功", Toast.LENGTH_LONG ).show();
                             finish();
                         }else{

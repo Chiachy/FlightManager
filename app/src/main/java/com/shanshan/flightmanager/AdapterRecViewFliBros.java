@@ -15,9 +15,9 @@ public class AdapterRecViewFliBros extends RecyclerView.Adapter<RecyclerView.Vie
 
     private LayoutInflater mInflater;
     private Context mContext;
-    public static List<FlightDatas> mDatas = new ArrayList<>();
+    public static List<ManagerFlightDatas> mDatas = new ArrayList<>();
 
-    public AdapterRecViewFliBros(Context context, List<FlightDatas> mDatas) {
+    public AdapterRecViewFliBros(Context context, List<ManagerFlightDatas> mDatas) {
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);

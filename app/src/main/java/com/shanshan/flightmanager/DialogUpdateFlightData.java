@@ -45,7 +45,7 @@ public class DialogUpdateFlightData extends Activity {
     View.OnClickListener okayOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(FlightManagerDB.getInstance(DialogUpdateFlightData.this)
+            if (DataBaseModel.getInstance(DialogUpdateFlightData.this)
                     .searchFlight(mUpFlightId.getText().toString()) != null){
                 if(!( mUpCompanyId.getText().toString().equals(null)
                         || mUpFlightWhereFrom.getText().toString().equals(null)
@@ -55,15 +55,15 @@ public class DialogUpdateFlightData extends Activity {
                         || mUpTrancitys.getText().toString().equals(null)
                         || mUpDay.getText().toString().equals(null)
                 )){
-                    FlightDatas flightDatas = new FlightDatas();
+                    ManagerFlightDatas managerFlightDatas = new ManagerFlightDatas();
                     Log.i("id",mUpFlightId.getText().toString() );
 
-                  /*  flightDatas.setCompanyId(mConpanyId.getText().toString());
-                    flightDatas.setWhereFrom(mWhereFrom.getText().toString());
-                    flightDatas.setWhereTo(mWhereTo.getText().toString());
-                    flightDatas.setTimeBegin(mTimeBegin.getText().toString());
-                    flightDatas.setTimeEnd(mTimeEnd.getText().toString());
-                    flightDatas.setDay(mFlightDay.getText().toString());*/
+                  /*  managerFlightDatas.setCompanyId(mConpanyId.getText().toString());
+                    managerFlightDatas.setWhereFrom(mWhereFrom.getText().toString());
+                    managerFlightDatas.setWhereTo(mWhereTo.getText().toString());
+                    managerFlightDatas.setTimeBegin(mTimeBegin.getText().toString());
+                    managerFlightDatas.setTimeEnd(mTimeEnd.getText().toString());
+                    managerFlightDatas.setDay(mFlightDay.getText().toString());*/
                     Toast.makeText(DialogUpdateFlightData.this, "输入成功！",Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(DialogUpdateFlightData.this,"请完整填写航班信息！",Toast.LENGTH_LONG)

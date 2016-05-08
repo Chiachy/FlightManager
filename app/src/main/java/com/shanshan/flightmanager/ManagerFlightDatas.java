@@ -3,7 +3,7 @@ package com.shanshan.flightmanager;
 /**
  * Created by shanshan on 2016/3/15.
  */
-public class FlightDatas {
+public class ManagerFlightDatas {
     private String companyId ;
     private String id ;
     private String whereFrom ;
@@ -15,10 +15,11 @@ public class FlightDatas {
     private String isForigen;
 
 
-    public FlightDatas() {}
+    public ManagerFlightDatas() {
+    }
 
-    public FlightDatas(String companyId, String id ,String whereFrom, String whereTo,
-                       String timeBegin, String timeEnd, String transCity,String day ){
+    public ManagerFlightDatas(String companyId, String id, String whereFrom, String whereTo,
+                              String timeBegin, String timeEnd, String transCity, String day) {
         this.companyId = companyId;
         this.id = id;
         this.whereFrom = whereFrom;

@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="输入你的年龄：" />
+            android:text="输入你的身份证号：" />
 
         <EditText
             android:layout_width="match_parent"
@@ -132,9 +132,11 @@
             android:id="@+id/editText3" />
 
         <Button
+            android:textColor="@color/white"
+            android:background="@color/skyBlue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="注册"
+            android:text="确认所填写信息无误并注册"
             android:id="@+id/sign_up_button" />
     </LinearLayout>
 

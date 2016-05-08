@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-public class ActivityForRecyclerView extends Activity {
+public class RecviewActivityOrderManaging extends Activity {
 
     private RecyclerView mRecyclerView;
     private AdapterOrderManagering mAdapter;
@@ -12,9 +12,9 @@ public class ActivityForRecyclerView extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_for_recycler_view);
+        setContentView(R.layout.recview_activity_order_managing);
 
-        mAdapter = new AdapterOrderManagering(this, FlightManagerDB.getInstance(this).loadOrderDatas());
+        mAdapter = new AdapterOrderManagering(this, DataBaseModel.getInstance(this).loadOrderDatas());
 
         mRecyclerView.setAdapter(mAdapter);
 

@@ -16,7 +16,7 @@ public class AdapterDialogDelete extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private LayoutInflater mInflater;
     private Context mContext;
-    public static List<FlightDatas> mDatas = new ArrayList<>();
+    public static List<ManagerFlightDatas> mDatas = new ArrayList<>();
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

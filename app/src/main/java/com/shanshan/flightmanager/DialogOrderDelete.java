@@ -28,11 +28,11 @@ public class DialogOrderDelete extends Activity {
     View.OnClickListener deleteOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if(FlightManagerDB.getInstance(DialogOrderDelete.this).searchUser(mEditText.getText()
+            if (DataBaseModel.getInstance(DialogOrderDelete.this).searchUser(mEditText.getText()
                     .toString()).getId() == null ){
-                FlightManagerDB.getInstance(DialogOrderDelete.this).deleteOrderData(mEditText
+                DataBaseModel.getInstance(DialogOrderDelete.this).deleteOrderData(mEditText
                         .getText().toString());
-                Log.i("FlightManagerDB", String.valueOf(FlightManagerDB
+                Log.i("DataBaseModel", String.valueOf(DataBaseModel
                         .getInstance(DialogOrderDelete.this)
                         .deleteOrderData(mEditText.getText().toString())) );
                 Toast.makeText(DialogOrderDelete.this, "该账单已删除", Toast.LENGTH_LONG).show();

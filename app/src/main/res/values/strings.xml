@@ -32,8 +32,8 @@
     <string name="hint_maflight_companyid">输入航空公司名</string>
     <string name="hint_maflight_wherefrom">输入航班始发地</string>
     <string name="hint_maflight_whereto">输入航班目的地</string>
-    <string name="hint_maflight_timebegin">输入开始时间</string>
-    <string name="hint_maflight_timeend">输入结束时间</string>
+    <string name="hint_maflight_timebegin">输入开始时间 (形式:时：分)</string>
+    <string name="hint_maflight_timeend">输入结束时间 (形式:时：分)</string>
     <string name="hint_maflight_transcity">输入中转站</string>
     <string name="hint_maflight_day">输入起飞日期（形式:年.月.日）</string>
     <string name="maflight_title">新建航班信息</string>

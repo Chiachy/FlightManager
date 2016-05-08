@@ -23,7 +23,7 @@ public class ActivityFlightDetails extends Activity {
     private TextView mWhereFrom;
     private TextView mWhereTo;
     private Button mBookingBtn;
-    private FlightDatas datas;
+    private ManagerFlightDatas datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +45,18 @@ public class ActivityFlightDetails extends Activity {
         mBookingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((FlightSystemApplication) getApplication()).getIsLogin()) {
-                    List<OrderDatas> orderDatases = FlightManagerDB.getInstance(ActivityFlightDetails.this)
+                if (((FlightManagerApplication) getApplication()).getIsLogin()) {
+                    List<ManagerOrderDatas> managerOrderDatases = DataBaseModel.getInstance(ActivityFlightDetails.this)
                             .searchOrderDatas(ActivityUserDetails.id);
-                    for (OrderDatas orderDatas : orderDatases) {
-                        if (orderDatas.getFlight_number().equals(datas.getId())) {
+                    for (ManagerOrderDatas managerOrderDatas : managerOrderDatases) {
+                        if (managerOrderDatas.getFlight_number().equals(datas.getId())) {
                             Toast.makeText(ActivityFlightDetails.this, "您已经预定过本次航班", Toast.LENGTH_LONG).show();
                             finish();
                             return;
                         }
                     }
-                    FlightManagerDB.getInstance(ActivityFlightDetails.this)
-                            .saveOrderData(new OrderDatas(ActivityUserDetails.id, datas.getId(), 100));
+                    DataBaseModel.getInstance(ActivityFlightDetails.this)
+                            .saveOrderData(new ManagerOrderDatas(ActivityUserDetails.id, datas.getId(), 100));
                     Toast.makeText(ActivityFlightDetails.this, "下单成功", Toast.LENGTH_LONG).show();
                     finish();
                 } else {
