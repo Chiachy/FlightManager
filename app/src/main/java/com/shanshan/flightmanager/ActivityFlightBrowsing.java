@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 /**
@@ -19,7 +18,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
 
     //private FloatingActionButton flightBroChooseButton;
     private RecyclerView userListView;
-    private AdapterRecycleView mAdapter;
+    private AdapterRecViewFliBros mAdapter;
     /*
      *  设置menu item的监听器
      */
@@ -60,10 +59,10 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         fbToolbar.setTitleTextColor( Color.parseColor( "#ffffff" ) );
         setActionBar(fbToolbar);
 
-        //检查FlightDatas表是否存在
+        /*//检查FlightDatas表是否存在
         FlightManagerDB mFlightDatabaseOpenHelper = FlightManagerDB
                 .getInstance(ActivityFlightBrowsing.this);
-        if(!mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }
+        if(!mFlightDatabaseOpenHelper.checkDataBase()){ initFlightDatas4DB(); }*/
 
         //绑定item的点击事件,并调用
         fbToolbar.setOnMenuItemClickListener( onMenuItemClickListener );
@@ -71,7 +70,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         /** recycleView 配置代码块 */
         initViews();//初始化RecycleView
 
-        mAdapter = new AdapterRecycleView(this , FlightManagerDB.getInstance(this).loadFlightDatas());
+        mAdapter = new AdapterRecViewFliBros(this, FlightManagerDB.getInstance(this).loadFlightDatas());
 
         userListView.setAdapter(mAdapter);
         //设置re-View的布局，并调用
@@ -120,7 +119,7 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initFlightDatas4DB() {
+    /*private void initFlightDatas4DB() {
 
         FlightManagerDB db = FlightManagerDB.getInstance(ActivityFlightBrowsing.this);
 
@@ -266,6 +265,6 @@ public class ActivityFlightBrowsing extends AppCompatActivity {
 
         Toast.makeText(ActivityFlightBrowsing.this, "数据库生成完毕" , Toast.LENGTH_LONG).show();
     }
-
+*/
 }
 

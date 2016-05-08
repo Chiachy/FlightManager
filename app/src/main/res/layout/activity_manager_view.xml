@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.shanshan.flightmanager.ActivityManagerView">
 
 
@@ -11,8 +11,8 @@
         android:id="@+id/manager_view_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:title="@string/activity_manager_view"
-        android:background="@color/skyBlue" />
+        android:background="@color/skyBlue"
+        android:title="@string/activity_manager_view" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/manager_viewpager"
@@ -21,9 +21,9 @@
         android:layout_below="@id/manager_view_toolbar">
 
         <android.support.v4.view.PagerTabStrip
+            android:id="@+id/view_pager_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/view_pager_header"
             android:paddingBottom="4dp"
             android:paddingEnd="4dp" />
 

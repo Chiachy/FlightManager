@@ -21,7 +21,6 @@ tools:context="com.shanshan.flightmanager.FragmentOrderManaging">
     android:id="@+id/order_delete"
     android:layout_gravity="center_horizontal" />
 
-    <include
-        layout="@layout/activity_activity_for_recycler_view"/>
+    <include layout="@layout/activity_activity_for_recycler_view" />
 
 </LinearLayout>
