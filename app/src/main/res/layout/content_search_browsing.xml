@@ -17,7 +17,6 @@
         android:padding="16dp"
         android:weightSum="1">
 
-
         <LinearLayout
             android:id="@+id/linearLayoutC"
             android:layout_width="match_parent"
@@ -71,11 +70,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/linearLayout"
-        android:layout_below="@+id/linearLayout4"
         android:layout_marginTop="23dp"
         android:background="@color/skyBlue"
         android:text="查        询"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:layout_below="@+id/linearLayout2" />
 
     <TextView
         android:id="@+id/new_browsing_all_flight"
@@ -103,7 +102,7 @@
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="航班日期："
+            android:text="出发日期："
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -119,79 +118,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="点此选择" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/linearLayout2"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_marginTop="16dp"
-        android:background="#ffffff"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/activity_horizontal_margin">
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="起飞时间："
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/timeBegin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="待选择"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <Button
-            android:id="@+id/choose_time_begin"
-            style="?android:attr/buttonBarNeutralButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点此选择" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/linearLayout3"
-        android:layout_below="@+id/linearLayout3"
-        android:layout_marginTop="16dp"
-        android:background="#ffffff"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/activity_horizontal_margin">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="降落时间："
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/timeEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="待选择"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <Button
-            android:id="@+id/choose_time_end"
-            style="?android:attr/buttonBarNeutralButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点此选择" />
-
 
     </LinearLayout>
 

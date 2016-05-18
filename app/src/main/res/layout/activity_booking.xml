@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#e1ecff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+        android:id="@+id/new_toolbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/skyBlue"
+        android:title="@string/booking"
+        android:titleTextColor="#ffffff" />
+
+    <com.shanshan.flightmanager.ToolClassies.SlidingTabLayout
+        android:layout_below="@id/new_toolbar_view"
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/content_search_browsing"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/sliding_tabs"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

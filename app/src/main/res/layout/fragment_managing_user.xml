@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.shanshan.flightmanager.FragmentManagingUser">
+    tools:context=".Fragments.FragmentManagingUser">
 
     <include layout="@layout/recview_activity_user_managing" />
 

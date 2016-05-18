@@ -8,35 +8,35 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".FlightManagerApplication"
+        android:name=".ToolClassies.FlightManagerApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityFlightBrowsing" />
+        <activity android:name=".Activities.ActivityFlightBrowsing" />
         <activity
-            android:name=".ActivityFlightDetails"
+            android:name=".Activities.ActivityFlightDetails"
             android:label="@string/title_activity_activity_flight_details" />
         <activity
-            android:name=".ActivityUserLogin"
+            android:name=".Activities.ActivityUserLogin"
             android:label="@string/title_activity_activity_user_login" />
-        <activity android:name=".ActivityManagerView" />
-        <activity android:name=".ActivityUserDetails" />
-        <activity android:name=".ActivitySignUp" />
-        <activity android:name=".ActivitySearch" />
-        <activity android:name=".ActivitySearchResult" />
-        <activity android:name=".DialogFlightAdd" />
-        <activity android:name=".DialogUserDelete" />
-        <activity android:name=".DialogOrderDelete" />
-        <activity android:name=".DialogFlightDelete" />
-        <activity android:name=".DialogOrderSearch" />
-        <activity android:name=".DialogUpdateFlightData" />
-        <activity android:name=".RecviewActivityOrderManaging" />
-        <activity android:name=".ActivityBooking" />
-        <activity android:name=".ActivityManagerViewNew" />
+        <activity android:name=".Activities.ActivityManagerView" />
+        <activity android:name=".Activities.ActivityUserDetails" />
+        <activity android:name=".Activities.ActivitySignUp" />
+        <activity android:name=".Activities.ActivitySearch" />
+        <activity android:name=".Activities.ActivitySearchResult" />
+        <activity android:name=".Fragments.DialogFlightAdd" />
+        <activity android:name=".Fragments.DialogUserDelete" />
+        <activity android:name=".Fragments.DialogOrderDelete" />
+        <activity android:name=".Fragments.DialogFlightDelete" />
+        <activity android:name=".Fragments.DialogOrderSearch" />
+        <activity android:name=".Fragments.DialogUpdateFlightData" />
+        <activity android:name=".Activities.RecviewActivityOrderManaging" />
+        <activity android:name=".Activities.ActivityBooking" />
+        <activity android:name=".Activities.ActivityManagerViewNew" />
         <activity
-            android:name=".ActivityBeginningAnimation"
+            android:name=".Activities.ActivityBeginningAnimation"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,8 +44,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecviewActivityFlightManaging" />
-        <activity android:name=".RecviewActivityUserManaging"></activity>
+        <activity android:name=".Activities.RecviewActivityFlightManaging" />
+        <activity android:name=".Activities.RecviewActivityUserManaging" />
+        <activity
+            android:name=".Activities.ActivityCanlander"
+            android:label="@string/title_activity_activity_canlander"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shanshan.flightmanager.ActivityFlightDetails">
+    tools:context=".Activities.ActivityFlightDetails">
 
     <Toolbar
         android:id="@+id/flight_details_toolbar"

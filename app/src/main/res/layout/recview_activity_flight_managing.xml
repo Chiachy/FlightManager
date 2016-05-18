@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shanshan.flightmanager.RecviewActivityFlightManaging">
+    tools:context=".Activities.RecviewActivityFlightManaging">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无航班信息" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rec_flight_managing"
@@ -11,7 +16,6 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
-        android:layout_above="@id/rec_flight_managing"
         android:id="@+id/fragment_flight_btns"
         android:orientation="horizontal"
         android:layout_width="match_parent"

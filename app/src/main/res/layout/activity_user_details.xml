@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shanshan.flightmanager.ActivityUserDetails">
+    tools:context=".Activities.ActivityUserDetails">
+
+    <Toolbar
+        android:background="@color/skyBlue"
+        android:title="@string/user_details"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@id/user_details_toolbar" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,9 +76,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="用户名："
         android:id="@+id/textView21"
-        android:layout_marginStart="31dp"
-        android:layout_alignTop="@+id/user_sex"
-        android:layout_alignStart="@+id/list_info" />
+        android:layout_alignTop="@+id/user_id"
+        android:layout_toStartOf="@+id/user_id" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,8 +85,8 @@
         android:text="chiachy"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/user_id"
-        android:layout_alignBottom="@+id/textView21"
-        android:layout_toEndOf="@+id/textView21" />
+        android:layout_above="@+id/age"
+        android:layout_alignEnd="@+id/user_age" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,7 +104,6 @@
         android:text="先 生"
         android:id="@+id/user_sex"
         android:layout_alignBottom="@+id/user_name"
-        android:layout_toEndOf="@+id/user_name"
-        android:layout_marginStart="8dp" />
+        android:layout_toEndOf="@+id/user_name" />
 
 </RelativeLayout>
