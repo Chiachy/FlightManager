@@ -52,6 +52,7 @@ public class ActivityCanlander extends Activity {
                 intent.putExtra("month", mMonth);
                 intent.putExtra("day", mDay);
                 startActivity(intent);
+                finish();
             }
         });
 

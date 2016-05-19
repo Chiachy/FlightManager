@@ -18,14 +18,14 @@ import java.util.List;
 /**
  * Created by Chiachi on 2016/4/7.
  */
-public class AdapterManagerViewFlight extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterManageFlightDatas extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private LayoutInflater mInflater;
     private Context mContext;
     public static List<ManagerFlightDatas> mDatas = new ArrayList<>();
 
-    public AdapterManagerViewFlight(Context context, List<ManagerFlightDatas> mDatas) {
+    public AdapterManageFlightDatas(Context context, List<ManagerFlightDatas> mDatas) {
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);

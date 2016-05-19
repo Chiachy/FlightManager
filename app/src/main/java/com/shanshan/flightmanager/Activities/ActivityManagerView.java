@@ -41,7 +41,6 @@ public class ActivityManagerView extends FragmentActivity {
         mPagerTabStrip.setTabIndicatorColor(Color.parseColor("#0090ff"));
         viewPager.setAdapter(mPagerAdapter);
         viewPager.setCurrentItem(1);
-
     }
 
     //Toolbar点击事件

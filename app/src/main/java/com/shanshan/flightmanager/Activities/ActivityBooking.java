@@ -13,13 +13,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.shanshan.flightmanager.Fragments.ChooseWhereFromFragment;
+import com.shanshan.flightmanager.Fragments.DatePickerFragment;
 import com.shanshan.flightmanager.R;
 import com.shanshan.flightmanager.ToolClassies.FlightManagerApplication;
 
 public class ActivityBooking extends AppCompatActivity {
 
     private final static String TAG = "ActivityBooking";
-
+    private final static String TEXTVIEWNAME_WHEREFROM = "mWhereFrom";
+    private final static String TEXTVIEWNAME_WHERETO = "mWhereTo";
     private int mYear = 0;
     private int mMonth = 0;
     private int mDayOfMonth = 0;
@@ -28,8 +31,8 @@ public class ActivityBooking extends AppCompatActivity {
     private TextView mWhereFrom;
     private TextView mWhereto;
     private TextView mDisplayDayTv;
-    private Button mChooseDay;
-    private Button mSearchButton;
+    private Button mChooseDayBtn;
+    private Button mSearchBtn;
     private TextView mBroswingAll;
 
     @Override
@@ -71,19 +74,34 @@ public class ActivityBooking extends AppCompatActivity {
         getDate(intent);
         mDisplayDayTv.setText(DisplayText(mYear, mMonth, mDayOfMonth));
 
-        mChooseDay.setOnClickListener(new View.OnClickListener() {
+        mWhereFrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityBooking.this, ActivityCanlander.class);
-                startActivity(intent);
+                showWhereFromDialog("mWhereFrom", mWhereFrom);
             }
         });
 
-        mSearchButton.setOnClickListener(new View.OnClickListener() {
+        mWhereto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityBooking.this,
-                        mYear + "." + mMonth + "." + mDayOfMonth, Toast.LENGTH_SHORT).show();
+                showWhereFromDialog("mWhereTo", mWhereto);
+            }
+        });
+
+        mChooseDayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePicker(mDisplayDayTv);
+            }
+        });
+
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ActivityBooking.this ,
+                        mWhereFrom.getText() + "至" + mWhereto.getText() + mDisplayDayTv.getText() ,
+                        Toast.LENGTH_SHORT
+                ).show();
             }
         });
 
@@ -101,9 +119,9 @@ public class ActivityBooking extends AppCompatActivity {
         mWhereFrom = (TextView) findViewById(R.id.search_wherefrom);
         mWhereto = (TextView) findViewById(R.id.search_whereto);
         mToolbar = (Toolbar) findViewById(R.id.new_toolbar_view);
-        mChooseDay = (Button) findViewById(R.id.choose_day);
+        mChooseDayBtn = (Button) findViewById(R.id.choose_day);
         mDisplayDayTv = (TextView) findViewById(R.id.day);
-        mSearchButton = (Button) findViewById(R.id.new_search_button);
+        mSearchBtn = (Button) findViewById(R.id.new_search_button);
         mBroswingAll = (TextView) findViewById(R.id.new_browsing_all_flight);
     }
 
@@ -131,6 +149,16 @@ public class ActivityBooking extends AppCompatActivity {
         //super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
+    }
+
+    public void showWhereFromDialog(String textviewname, TextView tv) {
+        ChooseWhereFromFragment chooseWhereFromDialog = new ChooseWhereFromFragment(textviewname, tv);
+        chooseWhereFromDialog.show(getSupportFragmentManager(), "ChooseWhereFromFragment");
+    }
+
+    public void showDatePicker(TextView tV){
+        DatePickerFragment datePickerFragment = new DatePickerFragment(tV);
+        datePickerFragment.show(getSupportFragmentManager(), "DatePickerFragment");
     }
 
 }

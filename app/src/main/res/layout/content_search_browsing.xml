@@ -9,7 +9,6 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/new_toolbar_view"
         android:layout_centerHorizontal="true"
         android:background="#ffffff"
         android:gravity="center"
@@ -18,11 +17,10 @@
         android:weightSum="1">
 
         <LinearLayout
+            android:padding="4dp"
             android:id="@+id/linearLayoutC"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/new_toolbar_view"
-            android:layout_centerHorizontal="true"
+            android:layout_height="96dp"
             android:background="#ffffff"
             android:gravity="center"
             android:orientation="horizontal"
@@ -33,14 +31,14 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:gravity="right"
+                android:gravity="center"
                 android:text="始发地"
                 android:textSize="30sp" />
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="52dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_trending_flat_black_36dp" />
 
@@ -50,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:entries="@array/whereto"
-                android:gravity="left"
+                android:gravity="center"
                 android:text="目的地"
                 android:textSize="30sp" />
         </LinearLayout>
@@ -60,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="点击上方文字选择相应地点"
+            android:text="点击上方文字选择"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
@@ -103,14 +101,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="出发日期："
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="待选择"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
             android:id="@+id/choose_day"

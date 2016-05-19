@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
     <EditText
         android:id="@+id/maflight_id"
         android:paddingTop="20dp"

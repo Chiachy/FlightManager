@@ -23,14 +23,10 @@ public class RecviewActivityFlightManaging extends Activity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-
-
     }
 
     public void initViews() {
-        //mRecyclerView = (RecyclerView) findViewById(R.id.rec_flight_managing);
-
+        mRecyclerView = (RecyclerView) findViewById(R.id.rec_flight_managing);
 
     }
 
