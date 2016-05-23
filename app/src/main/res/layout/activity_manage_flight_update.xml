@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#e2e2e2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+        android:id="@+id/manage_flight_update_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/skyBlue"
+        android:title="@string/ManageFlightUpdate" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout4"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/manage_flight_update_toolbar">
+
+        <EditText
+            android:hint="@string/hint_company"
+            android:minEms="2"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="航空公司"
+            android:textColor="@color/blueDark"
+            android:textSize="35sp"
+            android:id="@+id/manage_flight_update_company_id"
+            android:layout_marginEnd="7dp" />
+
+        <ImageButton
+            android:id="@+id/manage_flight_update_clear_company_btn"
+            android:scaleType="centerInside"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <EditText
+            android:hint="@string/hint_id"
+            android:minEms="4"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="MF1302"
+            android:textColor="@color/skyBlueDark"
+            android:textSize="27sp"
+            android:layout_marginStart="16dp"
+            android:id="@+id/manage_flight_update_number" />
+
+        <ImageButton
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_flight_number_btn"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/linearLayout3">
+
+        <Button
+            android:layout_marginBottom="8dp"
+            android:background="#e2e2e2"
+            android:text="取消"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manage_flight_update_cancel_btn" />
+
+        <Button
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"
+            android:background="@color/skyBlue"
+            android:text="确认更改"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manage_flight_update_confirm_btn" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout5"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_alignStart="@+id/linearLayout6">
+
+        <TextView
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="日期："
+            android:textColor="@color/skyBlueDark"
+            android:id="@+id/textView7" />
+
+        <EditText
+            android:minEms="5"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="2009.12.24"
+            android:id="@+id/manage_flight_update_day" />
+
+        <ImageButton
+            android:layout_marginStart="16dp"
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_btn"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout6"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/linearLayout5"
+        android:layout_alignStart="@+id/linearLayout7">
+
+        <TextView
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="出发时间："
+            android:textColor="@color/skyBlueDark"
+            android:id="@+id/textView10" />
+
+        <EditText
+            android:minEms="4"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="8:00"
+            android:id="@+id/manage_flight_update_time_begin" />
+
+        <ImageButton
+            android:layout_marginStart="16dp"
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_timebegin"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout7"
+        android:layout_below="@+id/linearLayout6"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:textSize="23sp"
+            android:textColor="@color/skyBlueDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="到达时间："
+            android:id="@+id/textView12" />
+
+        <EditText
+            android:minEms="4"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="9:00"
+            android:id="@+id/manage_flight_update_time_end" />
+
+        <ImageButton
+            android:layout_marginStart="16dp"
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_timeend"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout9"
+        android:layout_marginBottom="29dp"
+        android:layout_above="@+id/linearLayout3"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:textSize="23sp"
+            android:textColor="@color/skyBlueDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="中转城市："
+            android:id="@+id/textView" />
+
+        <EditText
+            android:minEms="4"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="深圳"
+            android:id="@+id/manage_flight_update_transcity" />
+
+        <ImageButton
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_trancity"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout8"
+        android:layout_above="@+id/linearLayout10"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:textSize="23sp"
+            android:textColor="@color/skyBlueDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="出发地点："
+            android:id="@+id/textView2" />
+
+        <EditText
+            android:minEms="4"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="北京"
+            android:id="@+id/manage_flight_update_where_from" />
+
+        <ImageButton
+            android:layout_marginStart="16dp"
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_wherefrom"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout10"
+        android:layout_above="@+id/linearLayout9"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:textSize="23sp"
+            android:textColor="@color/skyBlueDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="到达地点："
+            android:id="@+id/textView3"
+            android:layout_alignTop="@+id/linearLayout10"
+            android:layout_alignStart="@+id/linearLayout3" />
+
+        <EditText
+            android:minEms="4"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:textSize="23sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="深圳"
+            android:id="@+id/manage_flight_update_where_to" />
+
+        <ImageButton
+            android:layout_marginStart="16dp"
+            android:scaleType="centerInside"
+            android:id="@+id/manage_flight_update_clear_whereto"
+            android:src="@drawable/presence_offline"
+            android:background="@color/crystal"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

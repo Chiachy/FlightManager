@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.shanshan.flightmanager.Adapters.AdapterSearchResult;
-import com.shanshan.flightmanager.ToolClassies.ManagerFlightDatas;
+import com.shanshan.flightmanager.Tools.ManagerFlightDatas;
 import com.shanshan.flightmanager.R;
 
 import java.util.ArrayList;

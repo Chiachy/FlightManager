@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="北京"
-        android:id="@+id/where_from"
+        android:id="@+id/manageflight_where_from"
         android:layout_marginStart="18dp"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
@@ -26,7 +26,7 @@
         android:text="  至  "
         android:id="@+id/textView5"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/where_from" />
+        android:layout_toEndOf="@+id/manageflight_where_from" />
 
     <TextView
         android:ellipsize="end"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="上海"
-        android:id="@+id/where_to"
+        android:id="@+id/manageflight_where_to"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/textView5" />
 
@@ -45,24 +45,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="8:00"
-        android:id="@+id/time_begin"
+        android:id="@+id/manageflight_time_begin"
         android:layout_marginStart="30dp"
-        android:layout_alignBottom="@+id/where_to"
-        android:layout_toEndOf="@+id/where_to" />
+        android:layout_alignBottom="@+id/manageflight_where_to"
+        android:layout_toEndOf="@+id/manageflight_where_to" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  ~  "
         android:id="@+id/textView8"
-        android:layout_alignTop="@+id/time_begin"
-        android:layout_toEndOf="@+id/time_begin" />
+        android:layout_alignTop="@+id/manageflight_time_begin"
+        android:layout_toEndOf="@+id/manageflight_time_begin" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="11:00"
-        android:id="@+id/time_end"
+        android:id="@+id/manageflight_time_end"
         android:layout_alignTop="@+id/textView8"
         android:layout_toEndOf="@+id/textView8" />
 
@@ -71,8 +71,8 @@
         android:layout_height="wrap_content"
         android:text="中转："
         android:id="@+id/textView11"
-        android:layout_alignTop="@+id/where_to"
-        android:layout_toEndOf="@+id/time_end" />
+        android:layout_alignTop="@+id/manageflight_where_to"
+        android:layout_toEndOf="@+id/manageflight_time_end" />
 
     <TextView
         android:ellipsize="end"
@@ -92,6 +92,6 @@
         android:text="2014.03.02"
         android:id="@+id/day"
         android:layout_alignTop="@+id/textView11"
-        android:layout_alignStart="@+id/time_begin" />
+        android:layout_alignStart="@+id/manageflight_time_begin" />
 
 </RelativeLayout>

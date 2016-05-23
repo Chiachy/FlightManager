@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.shanshan.flightmanager.ToolClassies.DataBaseModel;
+import com.shanshan.flightmanager.Tools.DataBaseModel;
 import com.shanshan.flightmanager.R;
 
 /**

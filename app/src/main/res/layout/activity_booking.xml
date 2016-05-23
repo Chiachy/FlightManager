@@ -12,7 +12,7 @@
         android:title="@string/booking"
         android:titleTextColor="#ffffff" />
 
-    <com.shanshan.flightmanager.ToolClassies.SlidingTabLayout
+    <com.shanshan.flightmanager.Tools.SlidingTabLayout
         android:layout_below="@id/new_toolbar_view"
         android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"

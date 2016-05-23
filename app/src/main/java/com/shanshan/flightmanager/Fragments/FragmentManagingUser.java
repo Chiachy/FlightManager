@@ -1,33 +1,28 @@
 package com.shanshan.flightmanager.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shanshan.flightmanager.Activities.ActivitySignUp;
+import com.shanshan.flightmanager.Adapters.ManageUserDatasAdapter;
 import com.shanshan.flightmanager.R;
+import com.shanshan.flightmanager.Tools.DataBaseModel;
+import com.shanshan.flightmanager.Tools.ToolsRecyclerViewDividerLine;
 
 
 public class FragmentManagingUser extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
-    public FragmentManagingUser() {
-        // Required empty public constructor
-    }
+    private RecyclerView mRecyclerView;
+    private DataBaseModel mDataBase;
+    private ManageUserDatasAdapter mManageUserDatasAdapter;
 
     public static FragmentManagingUser newInstance(String param1, String param2) {
         FragmentManagingUser fragment = new FragmentManagingUser();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,35 +30,30 @@ public class FragmentManagingUser extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        mDataBase = DataBaseModel.getInstance(getActivity());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_managing_user, container, false);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rec_user_managing);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(
+                getActivity(), LinearLayoutManager.VERTICAL, false
+        ));
 
+        mManageUserDatasAdapter = new ManageUserDatasAdapter(getActivity(), mDataBase.loadUserDatas());
+        mRecyclerView.setAdapter(mManageUserDatasAdapter);
+
+        ToolsRecyclerViewDividerLine rVDividerLine =
+                new ToolsRecyclerViewDividerLine(ToolsRecyclerViewDividerLine.HORIZONTAL);
+        rVDividerLine.setSize(15);
+        rVDividerLine.setColor(0XFFDDDDDD);
+        mRecyclerView.addItemDecoration(rVDividerLine);
 
         return view;
     }
 
-    View.OnClickListener addUserDataOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(getActivity(), ActivitySignUp.class));
-        }
-    };
-
-    View.OnClickListener deleteUserDataOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            startActivity(new Intent(getActivity(), DialogUserDelete.class));
-        }
-    };
 
 /*
     public void showAddDialog() {

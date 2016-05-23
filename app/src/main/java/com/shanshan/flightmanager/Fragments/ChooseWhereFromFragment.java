@@ -3,7 +3,6 @@ package com.shanshan.flightmanager.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,21 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.shanshan.flightmanager.Adapters.AdapterChooseWhereFromTo;
+import com.shanshan.flightmanager.Adapters.FlightChooseSiteAdapter;
 import com.shanshan.flightmanager.R;
-import com.shanshan.flightmanager.ToolClassies.DataBaseModel;
-import com.shanshan.flightmanager.ToolClassies.ToolsRecyclerViewDividerLine;
+import com.shanshan.flightmanager.Tools.DataBaseModel;
+import com.shanshan.flightmanager.Tools.ToolsRecyclerViewDividerLine;
 
 public class ChooseWhereFromFragment extends DialogFragment {
 
-    private static final String TAG_FRAGMENT = "ChooseWhereFromFragment";
-
-    private AdapterChooseWhereFromTo mAdapter;
+    private FlightChooseSiteAdapter mAdapter;
     private DataBaseModel db;
     private String mWhichTextView;
     private TextView mWhereText;
     private ChooseWhereFromFragment fromFragment;
-    private FragmentTransaction fragmentTransaction;
 
     public ChooseWhereFromFragment(String name, TextView whereText) {
         this.mWhichTextView = name;
@@ -49,7 +45,7 @@ public class ChooseWhereFromFragment extends DialogFragment {
         fromFragment = this;
 
         //设置RecyclerView的适配器
-        mAdapter = new AdapterChooseWhereFromTo(getActivity(), db.loadFlightDatas(),
+        mAdapter = new FlightChooseSiteAdapter(getActivity(), db.loadFlightDatas(),
                 mWhichTextView, mWhereText, fromFragment);
 
         ((RecyclerView) recyclerView).setAdapter(mAdapter);

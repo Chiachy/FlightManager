@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ManageFlightAddActivity"
+    android:orientation="vertical"
+    android:background="#f2f2f2">
+
+    <Toolbar
+        android:titleTextColor="#ffffff"
+        android:title="@string/maflight_title"
+        android:background="@color/skyBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/maflight_id"
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_companyid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/macompany_id" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_wherefrom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maflight_wherefrom" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_whereto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maflight_whereto" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_timebegin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matime_begin" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_timeend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matime_end" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_transcity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/matranscity" />
+
+    <EditText
+        android:paddingTop="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:hint="@string/hint_maflight_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/maday" />
+
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:background="#e2e2e2"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="取消"
+            android:id="@+id/cancel" />
+
+        <Button
+            android:layout_margin="16dp"
+            android:background="@color/skyBlue"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="确认"
+            android:id="@+id/okay" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
