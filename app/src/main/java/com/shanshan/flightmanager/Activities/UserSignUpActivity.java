@@ -3,6 +3,7 @@ package com.shanshan.flightmanager.Activities;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import com.shanshan.flightmanager.Tools.ManagerUserDatas;
 import com.shanshan.flightmanager.R;
 
 public class UserSignUpActivity extends Activity {
+
+    private static final String TAG = "ManagerUserDatas";
 
     private EditText userId;
     private EditText userPassword;
@@ -34,9 +37,9 @@ public class UserSignUpActivity extends Activity {
         userId = (EditText) findViewById(R.id.user_add_account);
         userPassword = (EditText) findViewById(R.id.editText2);
         passwordConfirm = (EditText) findViewById(R.id.editText3);
-        signUp = (Button) findViewById(R.id.sign_up_button);
         userAge = (EditText) findViewById(R.id.editText4);
         userName = (EditText) findViewById(R.id.editText21);
+        signUp = (Button) findViewById(R.id.sign_up_button);
 
         userAge.setInputType(EditorInfo.TYPE_CLASS_NUMBER);
 
@@ -55,14 +58,18 @@ public class UserSignUpActivity extends Activity {
 
                         if(userPassword.getText().toString().equals(passwordConfirm.getText()
                                 .toString())){
+
                             ManagerUserDatas managerUserDatas = new ManagerUserDatas();
+
                             managerUserDatas.setId(userId.getText().toString());
                             managerUserDatas.setPassword(userPassword.getText().toString());
                             managerUserDatas.setSex(mRadioGroup.getCheckedRadioButtonId()
                                     == R.id.male ? "男":"女");
                             managerUserDatas.setName(userName.getText().toString());
                             managerUserDatas.setAge(userAge.getText().toString());
+                            Log.i(TAG, "年龄" + managerUserDatas.getId() + "，身份证" + managerUserDatas.getAge());
                             DataBaseModel.getInstance(UserSignUpActivity.this).saveUser(managerUserDatas);
+
                             Toast.makeText(UserSignUpActivity.this, "注册成功", Toast.LENGTH_LONG).show();
                             finish();
 

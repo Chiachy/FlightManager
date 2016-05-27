@@ -61,5 +61,7 @@
     <string name="hint_tran">输入中转城市</string>
 
     <string name="ConfirmDeleteOrderDialogFragmentTitle">是否删除该订单？</string>
-
+    <string name="manage_flight_tip">暂无航班信息</string>
+    <string name="manage_order_tip">暂无订单信息\n请等待用户下单</string>
+    <string name="manage_user_tip">暂无用户信息\n请等待用户注册</string>
 </resources>

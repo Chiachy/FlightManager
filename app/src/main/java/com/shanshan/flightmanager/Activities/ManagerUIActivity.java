@@ -14,7 +14,7 @@ import android.widget.Toolbar;
 
 import com.shanshan.flightmanager.Fragments.ManagingFlightFragment;
 import com.shanshan.flightmanager.Fragments.ManagingOrderFragment;
-import com.shanshan.flightmanager.Fragments.FragmentManagingUser;
+import com.shanshan.flightmanager.Fragments.ManagingUserFragment;
 import com.shanshan.flightmanager.R;
 
 public class ManagerUIActivity extends FragmentActivity {
@@ -87,7 +87,7 @@ public class ManagerUIActivity extends FragmentActivity {
                 case 0 :
                     return ManagingFlightFragment.newInstance(0, "Page Managing Flight");
                 case 1 :
-                    return FragmentManagingUser.newInstance("1" , "Page Managing User");
+                    return ManagingUserFragment.newInstance("1" , "Page Managing User");
                 case 2 :
                     return ManagingOrderFragment.newInstance("2", "Page Managing Order");
                 default:

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.shanshan.flightmanager.Activities.ManageFlightAddActivity;
 import com.shanshan.flightmanager.Adapters.ManageFlightDatasAdapter;
@@ -25,6 +26,7 @@ public class ManagingFlightFragment extends Fragment {
     private DataBaseModel mDataBase;
     private RecyclerView mRecView;
     private ManageFlightDatasAdapter mManageFlightDatasAdapter;
+    private TextView mTipTV;
 
     public static ManagingFlightFragment newInstance(int param1, String param2) {
         ManagingFlightFragment managingFlightFragment = new ManagingFlightFragment();
@@ -54,6 +56,11 @@ public class ManagingFlightFragment extends Fragment {
         mManageFlightDatasAdapter = new ManageFlightDatasAdapter(
                 getActivity(), mDataBase.loadFlightDatas()
         );
+
+        if (mManageFlightDatasAdapter.getItemCount() != 0) {
+            mTipTV = (TextView) view.findViewById(R.id.textView16);
+            mTipTV.setVisibility(View.GONE);
+        }
 
         mRecView.setAdapter(mManageFlightDatasAdapter);
 

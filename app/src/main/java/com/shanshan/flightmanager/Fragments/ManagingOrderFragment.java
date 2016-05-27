@@ -47,21 +47,26 @@ public class ManagingOrderFragment extends Fragment {
                 getActivity(), LinearLayoutManager.VERTICAL, false
         ));
 
-        //if (mManageOrderDatasAdapter.getItemCount() != 0) {
-        mTextView.setVisibility(View.GONE);
-        //}
-
         mManageOrderDatasAdapter = new ManageOrderDatasAdapter(
                 getActivity(), mDataBase.loadOrderDatas()
         );
 
+        if (mManageOrderDatasAdapter.getItemCount() != 0) {
+            mTextView.setVisibility(View.GONE);
+        }
+
         mRecyclerView.setAdapter(mManageOrderDatasAdapter);
 
-        ToolsRecyclerViewDividerLine rVDividerLine =
+        ToolsRecyclerViewDividerLine HORIZONTALDividerLine =
                 new ToolsRecyclerViewDividerLine(ToolsRecyclerViewDividerLine.HORIZONTAL);
-        rVDividerLine.setSize(15);
-        rVDividerLine.setColor(0XFFDDDDDD);
-        mRecyclerView.addItemDecoration(rVDividerLine);
+        HORIZONTALDividerLine.setSize(8);
+        HORIZONTALDividerLine.setColor(0XFFDDDDDD);
+//        ToolsRecyclerViewDividerLine VERTICALDividerLine =
+//                new ToolsRecyclerViewDividerLine(ToolsRecyclerViewDividerLine.VERTICAL);
+//        VERTICALDividerLine.setSize(8);
+//        VERTICALDividerLine.setColor(0XFFDDDDDD);
+        mRecyclerView.addItemDecoration(HORIZONTALDividerLine);
+        //mRecyclerView.addItemDecoration(VERTICALDividerLine);
 
 
         return view;

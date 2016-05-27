@@ -5,10 +5,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
         android:id="@+id/order_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="暂无订单信息"
+        android:text="@string/manage_order_tip"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="106dp" />

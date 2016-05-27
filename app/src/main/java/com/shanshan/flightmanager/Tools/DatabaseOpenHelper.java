@@ -14,7 +14,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     /*
     * FlightDatas表建表语句
     */
-    public static final String CREATE_DATAS = "create table ManagerFlightDatas(" +
+    public static final String CREATE_DATAS =
+            "create table ManagerFlightDatas(" +
             "id text primary key ," +
             "company_id text ," +
             "flight_number text ," +
@@ -27,14 +28,16 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             "isForigen text" +
             ") ";
 
-    public static final String CREATE_ORDER_TABLE = "create table ManagerOrderDatas(" +
+    public static final String CREATE_ORDER_TABLE =
+            "create table ManagerOrderDatas(" +
             "id integer primary key autoincrement," + //订单编号
             "user_id text," +
             "price integer," +
             "flight_number text" +
             ") ";
 
-    public static final String CREATE_USER_TABLE = "create table ManagerUserDatas(" +
+    public static final String CREATE_USER_TABLE =
+            "create table ManagerUserDatas(" +
             "id text primary key," +
             "password text," +
             "name text," +

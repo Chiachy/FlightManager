@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.shanshan.flightmanager.Adapters.ManageUserDatasAdapter;
 import com.shanshan.flightmanager.R;
@@ -14,14 +15,15 @@ import com.shanshan.flightmanager.Tools.DataBaseModel;
 import com.shanshan.flightmanager.Tools.ToolsRecyclerViewDividerLine;
 
 
-public class FragmentManagingUser extends Fragment {
+public class ManagingUserFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private DataBaseModel mDataBase;
     private ManageUserDatasAdapter mManageUserDatasAdapter;
+    private TextView mTipTV;
 
-    public static FragmentManagingUser newInstance(String param1, String param2) {
-        FragmentManagingUser fragment = new FragmentManagingUser();
+    public static ManagingUserFragment newInstance(String param1, String param2) {
+        ManagingUserFragment fragment = new ManagingUserFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -44,6 +46,11 @@ public class FragmentManagingUser extends Fragment {
 
         mManageUserDatasAdapter = new ManageUserDatasAdapter(getActivity(), mDataBase.loadUserDatas());
         mRecyclerView.setAdapter(mManageUserDatasAdapter);
+
+        if (mManageUserDatasAdapter.getItemCount() != 0) {
+            mTipTV = (TextView) view.findViewById(R.id.manage_user_tip);
+            mTipTV.setVisibility(View.GONE);
+        }
 
         ToolsRecyclerViewDividerLine rVDividerLine =
                 new ToolsRecyclerViewDividerLine(ToolsRecyclerViewDividerLine.HORIZONTAL);

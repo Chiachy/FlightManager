@@ -16,6 +16,7 @@ public class ManagerFlightDatas {
 
 
     public ManagerFlightDatas() {
+
     }
 
     public ManagerFlightDatas(String companyId, String id, String whereFrom, String whereTo,

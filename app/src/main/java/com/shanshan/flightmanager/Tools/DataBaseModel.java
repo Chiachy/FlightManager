@@ -248,10 +248,10 @@ public class DataBaseModel {
             do {
                 ManagerUserDatas managerUserDatas = new ManagerUserDatas();
                 managerUserDatas.setId(cursor.getString(cursor.getColumnIndex("id")));
-                managerUserDatas.setId(cursor.getString(cursor.getColumnIndex("password")));
-                managerUserDatas.setId(cursor.getString(cursor.getColumnIndex("name")));
-                managerUserDatas.setId(cursor.getString(cursor.getColumnIndex("sex")));
-                managerUserDatas.setId(cursor.getString(cursor.getColumnIndex("age")));
+                managerUserDatas.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                managerUserDatas.setName(cursor.getString(cursor.getColumnIndex("name")));
+                managerUserDatas.setSex(cursor.getString(cursor.getColumnIndex("sex")));
+                managerUserDatas.setAge(cursor.getString(cursor.getColumnIndex("age")));
                 list.add(managerUserDatas);
             } while (cursor.moveToNext());
         }

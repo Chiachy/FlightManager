@@ -22,6 +22,7 @@ import java.util.List;
 /**
  * Created by Chiachi on 2016/5/23.
  */
+
 public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mInflater;
@@ -44,10 +45,13 @@ public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((MyViewHolder) holder).orderNumber.setText(mDatas.get(position).getId());
+
+        ((MyViewHolder) holder).orderNumber.setText(String.valueOf(mDatas.get(position).getId()));
         ((MyViewHolder) holder).userNumber.setText(mDatas.get(position).getUserId());
         ((MyViewHolder) holder).flightNumber.setText(mDatas.get(position).getFlightNumber());
+
         ((MyViewHolder) holder).itemView.setTag(position);
+
         mPosition = position;
     }
 
@@ -57,7 +61,6 @@ public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView orderNumber;
         TextView userNumber;
         TextView flightNumber;
@@ -72,7 +75,7 @@ public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.V
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showDeleteOrderDialog(mDatas.get(mPosition));
+                    //showDeleteOrderDialog(mDatas.get(mPosition));
                 }
             });
 

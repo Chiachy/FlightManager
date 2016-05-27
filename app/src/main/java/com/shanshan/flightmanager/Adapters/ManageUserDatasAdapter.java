@@ -18,6 +18,8 @@ import java.util.List;
  */
 public class ManageUserDatasAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final String TAG = "ManagerUserDatas?";
+
     private LayoutInflater mInflater;
     private Context mContext;
     public static List<ManagerUserDatas> mDatas = new ArrayList<>();
@@ -39,6 +41,7 @@ public class ManageUserDatasAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ((MyViewHolder) holder).userId.setText(mDatas.get(position).getId());
+        ((MyViewHolder) holder).userName.setText(mDatas.get(position).getName());
         ((MyViewHolder) holder).itemView.setTag(position);
         mPosition = position;
     }
@@ -51,16 +54,18 @@ public class ManageUserDatasAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView userId;
+        TextView userName;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
 
             userId = (TextView) itemView.findViewById(R.id.item_user_data_id);
+            userName = (TextView) itemView.findViewById(R.id.item_user_data_name);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //showDeleteOrderDialog(mDatas.get(mPosition));
+
                 }
             });
 

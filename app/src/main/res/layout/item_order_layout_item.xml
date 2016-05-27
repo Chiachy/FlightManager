@@ -23,7 +23,7 @@
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="用户编号"
+        android:text="用户"
         android:layout_gravity="center_vertical" />
 
     <TextView
