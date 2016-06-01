@@ -3,7 +3,6 @@ package com.shanshan.flightmanager.Activities;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -12,9 +11,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.shanshan.flightmanager.R;
 import com.shanshan.flightmanager.Tools.DataBaseModel;
 import com.shanshan.flightmanager.Tools.ManagerUserDatas;
-import com.shanshan.flightmanager.R;
 
 public class UserSignUpActivity extends Activity {
 
@@ -67,7 +66,8 @@ public class UserSignUpActivity extends Activity {
                                     == R.id.male ? "男":"女");
                             managerUserDatas.setName(userName.getText().toString());
                             managerUserDatas.setAge(userAge.getText().toString());
-                            Log.i(TAG, "年龄" + managerUserDatas.getId() + "，身份证" + managerUserDatas.getAge());
+                            /*Log.i(TAG, "年龄" + managerUserDatas.getId() + "，身份证"
+                                    + managerUserDatas.getAge());*/
                             DataBaseModel.getInstance(UserSignUpActivity.this).saveUser(managerUserDatas);
 
                             Toast.makeText(UserSignUpActivity.this, "注册成功", Toast.LENGTH_LONG).show();

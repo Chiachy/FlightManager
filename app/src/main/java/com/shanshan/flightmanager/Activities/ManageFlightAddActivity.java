@@ -85,7 +85,8 @@ public class ManageFlightAddActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             String rowId = mFlightId.getText().toString();
                             mFlightData = DataBaseModel.getInstance(ManageFlightAddActivity.this)
-                                    .searchFlight(rowId);
+                                    .searchFlight(mWhereFrom.getText().toString(), mWhereTo.getText().toString(),
+                                            mFlightDay.getText().toString());
 
                             // TODO: 2016/4/20 判断是否存在该班次的语句 | 页面刷新
                             if (mConpanyId.getText().toString().length() == 0

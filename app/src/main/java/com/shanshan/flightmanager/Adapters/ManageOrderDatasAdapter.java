@@ -1,19 +1,14 @@
 package com.shanshan.flightmanager.Adapters;
 
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shanshan.flightmanager.R;
-import com.shanshan.flightmanager.Tools.DataBaseModel;
 import com.shanshan.flightmanager.Tools.ManagerOrderDatas;
 
 import java.util.ArrayList;
@@ -29,8 +24,11 @@ public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.V
     private Context mContext;
     public static List<ManagerOrderDatas> mDatas = new ArrayList<>();
     private int mPosition;
+    private EditText mInputOrderIdEdTxt;
 
-    public ManageOrderDatasAdapter(Context context, List<ManagerOrderDatas> mDatas) {
+
+    public ManageOrderDatasAdapter(Context context, List<ManagerOrderDatas> mDatas, EditText mInputOrderIdEdTxt) {
+        this.mInputOrderIdEdTxt = mInputOrderIdEdTxt;
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);
@@ -75,47 +73,54 @@ public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.V
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //showDeleteOrderDialog(mDatas.get(mPosition));
+                    /*String tags = String.valueOf(itemView.getTag());
+                    int tag = Integer.valueOf(tags) + 1;
+                    String newTag = String.valueOf(tag);*/
+                    //String newTag = String.valueOf(itemView.getId());
+                    //mInputOrderIdEdTxt.setText(newTag);
+                    //Toast.makeText(mContext, "已将该订单号粘贴至下方输入框", Toast.LENGTH_SHORT).show();
                 }
             });
+        }
 
         }
 
-    }
+        /*public void showDeleteOrderDialog(int mdatas) {
+            ManagerUIActivity managerUIActivity = new ManagerUIActivity();
+            FragmentManager manager = managerUIActivity.getSupportFragmentManager();
 
-    public void showDeleteOrderDialog(ManagerOrderDatas mdatas) {
-        ConfirmDeleteOrderDialogFragment confirmDeleteOrderDialogFragment =
-                new ConfirmDeleteOrderDialogFragment(mdatas);
-        confirmDeleteOrderDialogFragment.show(confirmDeleteOrderDialogFragment.getFragmentManager(), "showDeleteOrderDialog");
-    }
-
-    public class ConfirmDeleteOrderDialogFragment extends DialogFragment {
-
-        private ManagerOrderDatas mdatas;
-
-        public ConfirmDeleteOrderDialogFragment(ManagerOrderDatas datas) {
-            this.mdatas = datas;
+            ConfirmDeleteOrderDialogFragment confirmDeleteOrderDialogFragment =
+                    new ConfirmDeleteOrderDialogFragment(mdatas);
+            //confirmDeleteOrderDialogFragment.show();
         }
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage(R.string.ConfirmDeleteDialogFragmentTitle)
-                    .setPositiveButton(R.string.ConfirmOkay, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            DataBaseModel db = DataBaseModel.getInstance(getActivity());
-                            db.deleteOrderData(String.valueOf(mdatas.getId()));
-                            dismiss();
-                        }
-                    })
-                    .setNegativeButton(R.string.ConfirmCancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dismiss();
-                        }
-                    });
+        public class ConfirmDeleteOrderDialogFragment extends DialogFragment {
 
-            return builder.create();
-        }
-    }
+            private int mOrderID;
+
+            public ConfirmDeleteOrderDialogFragment(int orderId) {
+                this.mOrderID = orderId;
+            }
+
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(R.string.ConfirmDeleteOrderDialogFragmentTitle)
+                        .setPositiveButton(R.string.ConfirmOkay, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                DataBaseModel db = DataBaseModel.getInstance(getActivity());
+                                db.deleteOrderData(mOrderID);
+                                dismiss();
+                            }
+                        })
+                        .setNegativeButton(R.string.ConfirmCancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dismiss();
+                            }
+                        });
+
+                return builder.create();
+            }
+        }*/
 
 }

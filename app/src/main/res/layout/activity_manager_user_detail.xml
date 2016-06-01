@@ -1,137 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#e2e2e2"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.shanshan.flightmanager.Activities.ManagerUserDetailActivity">
 
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/content_manager_user_detail"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/include" />
+
     <Toolbar
         android:background="@color/skyBlue"
         android:title="@string/user_details"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@id/user_details_toolbar" />
+        android:id="@id/user_details_toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
-    <LinearLayout
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:gravity="bottom"
-        android:id="@+id/user_details_linearlayout"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/age"
-        android:layout_alignStart="@+id/user_details"
-        android:layout_marginBottom="19dp">
+    <ImageButton
+        android:id="@+id/manager_user_clear_account"
+        android:scaleType="centerInside"
+        android:src="@drawable/presence_offline"
+        android:background="@color/crystal"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/manager_user_clear_name"
+        android:layout_alignParentEnd="true" />
 
+    <ImageButton
+        android:scaleType="centerInside"
+        android:background="@color/crystal"
+        android:src="@drawable/presence_offline"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/manager_user_clear_name"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="24dp"
+        android:layout_alignTop="@+id/include"
+        android:layout_alignParentStart="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="姓 名"
-            android:textColor="@color/skyBlueDark"
-            android:textSize="35sp"
-            android:id="@+id/user_name" />
-
-
-        <TextView
-            android:paddingStart="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="先 生"
-            android:id="@+id/user_sex" />
-
-        <TextView
-            android:textColor="@color/skyBlueDark"
-            android:paddingStart="@dimen/activity_horizontal_margin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="用户名："
-            android:id="@+id/textView21" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="chiachy"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/user_id" />
-
-    </LinearLayout>
-
-
-    <TextView
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="身份证号："
-        android:textColor="@color/skyBlue"
-        android:textSize="20sp"
-        android:id="@+id/age" />
-
-    <TextView
-        android:layout_margin="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20sp"
-        android:text="300100100010101000"
-        android:id="@+id/user_age"
-        android:layout_alignBottom="@+id/age"
-        android:layout_toEndOf="@+id/age" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:id="@+id/user_details"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginBottom="22dp" />
-
-    Button
-    android:layout_marginBottom="4dp"
-    android:textColor="@color/white"
-    android:background="@color/skyBlue"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="退出登录"
-    android:id="@+id/exit_login"
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:weightSum="2"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:textColor="@color/white"
-            android:layout_weight="0.8"
-            android:background="@color/skyBlue"
-            android:layout_marginRight="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 修改账户信息"
-            android:id="@+id/button" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="暂无订单信息，赶快去下单吧~"
-        android:id="@+id/list_info"
-        android:layout_alignTop="@+id/user_details"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp" />
-
-</LinearLayout>
+    <ImageButton
+        android:scaleType="centerInside"
+        android:background="@color/crystal"
+        android:src="@drawable/presence_offline"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/manager_user_clear_age"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="79dp"
+        android:layout_below="@+id/manager_user_clear_account"
+        android:layout_toStartOf="@+id/manager_user_clear_account" />
+</RelativeLayout>

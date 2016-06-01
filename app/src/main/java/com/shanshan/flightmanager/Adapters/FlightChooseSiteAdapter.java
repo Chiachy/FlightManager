@@ -69,7 +69,7 @@ public class FlightChooseSiteAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView whereText;
 
         public MyViewHolder(final View itemView) {

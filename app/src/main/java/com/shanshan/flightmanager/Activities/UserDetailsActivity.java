@@ -182,7 +182,7 @@ public class UserDetailsActivity extends Activity {
                     .setPositiveButton(R.string.ConfirmOkay, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             DataBaseModel db = DataBaseModel.getInstance(UserDetailsActivity.this);
-                            db.deleteOrderData(String.valueOf(mdatas.getId()));
+                            db.deleteOrderData(mdatas.getId());
                             dismiss();
                         }
                     })

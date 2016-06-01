@@ -11,27 +11,31 @@ import java.util.List;
 
 /**
  * Created by shanshan on 2016/3/16.
- *
+ * <p/>
  * 数据库接口
  */
 public class DataBaseModel {
 
-    public static final String DB_NAME = "flight_manager" ; //数据库名
+    public static final String DB_NAME = "flight_manager"; //数据库名
 
-    public static final int VERSION = 1 ; //数据库版本
+    public static final int VERSION = 1; //数据库版本
 
     private static DataBaseModel dataBaseModel;
 
     private SQLiteDatabase db;
 
-    /** 将构造方法私有化*/
+    /**
+     * 将构造方法私有化
+     */
     private DataBaseModel(Context context) {
         DatabaseOpenHelper dbHelper = new DatabaseOpenHelper(context,
                 DB_NAME, null, VERSION);
         db = dbHelper.getWritableDatabase();
     }
 
-    /** 获取FlightManagerDB的实例*/
+    /**
+     * 获取FlightManagerDB的实例
+     */
     public synchronized static DataBaseModel getInstance(Context context) {
         if (dataBaseModel == null) {
             dataBaseModel = new DataBaseModel(context);
@@ -42,6 +46,7 @@ public class DataBaseModel {
 
     /**
      * 将FlightDatas实例存储到数据库
+     *
      * @param managerFlightDatas
      */
     public void saveFlightDatas(ManagerFlightDatas managerFlightDatas) {
@@ -62,6 +67,7 @@ public class DataBaseModel {
 
     /**
      * 从数据库读取所有航班信息
+     *
      * @return 航班信息表
      */
     public List<ManagerFlightDatas> loadFlightDatas() {
@@ -80,7 +86,7 @@ public class DataBaseModel {
                 managerFlightDatas.setDay(cursor.getString(cursor.getColumnIndex("day")));
                 managerFlightDatas.setIsForigen(cursor.getString(cursor.getColumnIndex("isForigen")));
                 list.add(managerFlightDatas);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         return list;
@@ -88,15 +94,17 @@ public class DataBaseModel {
 
     /**
      * 搜索航班信息
-     * @param row 搜索关键字
-     * @return  返回搜索结果列表
+     *
+     * @param wherefrom 搜索关键字
+     * @return 返回搜索结果列表
      */
-    public List<ManagerFlightDatas> searchFlight(String row) {
+    public List<ManagerFlightDatas> searchFlight(String wherefrom, String whereto, String day) {
         List<ManagerFlightDatas> list = new ArrayList<>();
         Cursor cursor = null;
-        String sql = "select * from ManagerFlightDatas where id=? or where_from=? or where_to=?";
-        String[] args = {row};
-        cursor = db.rawQuery(sql,args);
+        String sql = "select * from ManagerFlightDatas " +
+                "where where_from=? or where_to=?";// + whereto ;//+ " and day=?";
+        String[] args = {wherefrom};
+        cursor = db.rawQuery(sql, args);
         if (cursor.moveToFirst()) {
             do {
                 ManagerFlightDatas managerFlightDatas = new ManagerFlightDatas();
@@ -120,6 +128,7 @@ public class DataBaseModel {
 
     /**
      * 删除航班数据
+     *
      * @param id
      * @return
      */
@@ -129,7 +138,8 @@ public class DataBaseModel {
     }
 
     /**
-     * 订单数据
+     * 搜索订单数据
+     *
      * @param userId
      * @return
      */
@@ -139,15 +149,16 @@ public class DataBaseModel {
         String sql = "select * from ManagerOrderDatas where user_id=?";
         String[] args = {userId};
         cursor = db.rawQuery(sql, args);
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             do {
                 ManagerOrderDatas managerOrderDatas = new ManagerOrderDatas();
                 managerOrderDatas.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                managerOrderDatas.setFlightNumber(cursor.getString(cursor.getColumnIndex("flight_number")));
+                managerOrderDatas.setFlightNumber(cursor.getString(
+                        cursor.getColumnIndex("flight_number")));
                 managerOrderDatas.setPrice(cursor.getInt(cursor.getColumnIndex("price")));
                 managerOrderDatas.setUserId(cursor.getString(cursor.getColumnIndex("user_id")));
                 list.add(managerOrderDatas);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         return list;
@@ -155,6 +166,7 @@ public class DataBaseModel {
 
     /**
      * 加载所有订单信息
+     *
      * @return
      */
     public List<ManagerOrderDatas> loadOrderDatas() {
@@ -167,9 +179,10 @@ public class DataBaseModel {
                 managerOrderDatas.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 managerOrderDatas.setPrice(cursor.getInt(cursor.getColumnIndex("price")));
                 managerOrderDatas.setUserId(cursor.getString(cursor.getColumnIndex("user_id")));
-                managerOrderDatas.setFlightNumber(cursor.getString(cursor.getColumnIndex("flight_number")));
+                managerOrderDatas.setFlightNumber(cursor.getString(cursor.getColumnIndex(
+                        "flight_number")));
                 list.add(managerOrderDatas);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         return list;
@@ -177,6 +190,7 @@ public class DataBaseModel {
 
     /**
      * 保存订单信息
+     *
      * @param managerOrderDatas 订单数据对象
      */
     public void saveOrderData(ManagerOrderDatas managerOrderDatas) {
@@ -192,24 +206,43 @@ public class DataBaseModel {
 
     /**
      * 删除订单信息
+     *
      * @param id 订单id
-     * @return  删除结果
+     * @return 删除结果
      */
-    public int deleteOrderData(String id) {
-        String[] ids = {id};
+    public int deleteOrderData(int id) {
+        String[] ids = {String.valueOf(id)};
+        /*if (id / 10 == 0) {
+
+            int[] intIds = new int[1];
+            intIds[0] = id;
+
+            for (int i = 0; i < intIds.length; i++) {
+                ids = ids + intIds[i];
+            }
+
+        } else if (id / 10 >= 1) {
+            int[] intIds = new int[2];
+            intIds[0] = id / 10;
+            intIds[1] = id % 10;
+            for (int i = 0; i < intIds.length; i++) {
+                ids = ids + intIds[i];
+            }
+        }*/
         return db.delete("ManagerOrderDatas", "id=?", ids);
     }
 
     /**
      * 查找用户信息
+     *
      * @param id 需要查找的用户的id
-     * @return  返回查找结果
+     * @return 返回查找结果
      */
-
     public ManagerUserDatas searchUser(String id) {
         ManagerUserDatas managerUserDatas = new ManagerUserDatas();
-        Cursor c = db.rawQuery("select * from ManagerUserDatas where id=?", new String[]{id});
-        if(c.moveToFirst()) {
+        Cursor c = db.rawQuery("select * from ManagerUserDatas where id=?",
+                new String[]{id});
+        if (c.moveToFirst()) {
             managerUserDatas.setId(id);
             managerUserDatas.setAge(c.getString(c.getColumnIndex("age")));
             managerUserDatas.setName(c.getString(c.getColumnIndex("name")));
@@ -223,6 +256,7 @@ public class DataBaseModel {
 
     /**
      * 保存用户信息
+     *
      * @param managerUserDatas
      */
     public void saveUser(ManagerUserDatas managerUserDatas) {
@@ -259,6 +293,10 @@ public class DataBaseModel {
         return list;
     }
 
+    /**
+     * @param id
+     * @return
+     */
     public int deleteUserData(String id) {
         String[] ids = {id};
         return db.delete("ManagerUserDatas", "id=?", ids);
@@ -266,18 +304,19 @@ public class DataBaseModel {
 
     /**
      * 检查数据库表是否存在
+     *
      * @return true：数据库存在
      */
-    public boolean checkDataBase(){
+    public boolean checkDataBase() {
         SQLiteDatabase checkDB = null;
-        try{
+        try {
             String myPath = "/data/data/com.shanshan.flightmanager/" + "ManagerFlightDatas";
             checkDB = SQLiteDatabase.openDatabase(myPath, null,
                     SQLiteDatabase.OPEN_READONLY | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-        }catch(SQLiteException e){
+        } catch (SQLiteException e) {
             //database does't exist yet.
         }
-        if(checkDB != null){
+        if (checkDB != null) {
             checkDB.close();
         }
         return checkDB != null ? true : false;

@@ -43,6 +43,7 @@ public class FlightBroswingAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         ((MyViewHolder) holder).dtimeEnd.setText(mDatas.get(position).getTimeEnd());
         ((MyViewHolder) holder).dtransCity.setText(mDatas.get(position).getTransCity());
         ((MyViewHolder) holder).dDay.setText((mDatas.get(position).getDay()));
+
         ((MyViewHolder) holder).itemView.setTag(position);
     }
 
@@ -67,13 +68,12 @@ public class FlightBroswingAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             dtimeBegin = (TextView) itemView.findViewById(R.id.manageflight_time_begin);
             dtimeEnd = (TextView) itemView.findViewById(R.id.manageflight_time_end);
             dtransCity = (TextView) itemView.findViewById(R.id.trans_city);
-            dDay = (TextView) itemView.findViewById(R.id.day);
+            dDay = (TextView) itemView.findViewById(R.id.item_day);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, FlightDetailsActivity.class);
-                    //intent.putExtra()
                     intent.putExtra("id", (int) itemView.getTag());
                     mContext.startActivity(intent);
                 }

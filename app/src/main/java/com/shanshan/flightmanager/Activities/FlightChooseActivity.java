@@ -103,17 +103,18 @@ public class FlightChooseActivity extends AppCompatActivity {
                         mWhereFrom.getText() + "至" + mWhereto.getText() + mDisplayDayTv.getText() ,
                         Toast.LENGTH_SHORT
                 ).show();*/
-                if (mWhereFrom.getText().equals("始发地") || mWhereto.getText().equals("目的地") ||
-                        mDisplayDayTv.getText().equals("待选择")) {
+                if (mWhereFrom.getText().equals("始发地")
+                        || mWhereto.getText().equals("目的地")
+                        || mDisplayDayTv.getText().equals("待选择")) {
                     Toast.makeText(FlightChooseActivity.this,
-                            "请输入完整的航班信息，再进行搜索", Toast.LENGTH_LONG).show();
+                            "请输入完整的航班信息，再进行搜索",
+                            Toast.LENGTH_LONG).show();
                 } else {
-
-                    ActivitySearchResult.datases = DataBaseModel.getInstance(FlightChooseActivity.this)
-                            .searchFlight(mWhereto.getText().toString());
-                    Intent intent = new Intent(FlightChooseActivity.this, ActivitySearchResult.class);
+                    FlightSearchResultActivity.datases = DataBaseModel.getInstance(FlightChooseActivity.this)
+                            .searchFlight(mWhereFrom.getText().toString(), mWhereto.getText().toString(),
+                                    mDisplayDayTv.getText().toString());
+                    Intent intent = new Intent(FlightChooseActivity.this, FlightSearchResultActivity.class);
                     startActivity(intent);
-
                 }
             }
         });

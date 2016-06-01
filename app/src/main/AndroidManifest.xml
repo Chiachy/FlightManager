@@ -24,8 +24,7 @@
         <activity android:name=".Activities.ManagerUIActivity" />
         <activity android:name=".Activities.UserDetailsActivity" />
         <activity android:name=".Activities.UserSignUpActivity" />
-        <activity android:name=".Activities.ActivitySearch" />
-        <activity android:name=".Activities.ActivitySearchResult" />
+        <activity android:name=".Activities.FlightSearchResultActivity" />
         <activity android:name=".Activities.ManageFlightAddActivity" />
         <activity android:name=".Activities.FlightChooseActivity" />
         <activity
@@ -39,7 +38,8 @@
         </activity>
         <activity android:name=".Activities.ManageFlightDisplayDetailActivity" />
         <activity android:name=".Activities.ManageFlightDataUpdateActivity" />
-        <activity android:name=".Activities.ManagerUserDetailActivity"></activity>
+        <activity android:name=".Activities.ManagerUserDetailActivity" />
+        <activity android:name=".Activities.ManagerOrderDisplayDetailActivity"></activity>
     </application>
 
 </manifest>

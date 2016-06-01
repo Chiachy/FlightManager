@@ -34,7 +34,6 @@ public class ManageFlightDatasAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_flight_view, parent, false);
-
         MyViewHolder viewHolder = new MyViewHolder(view);
         return viewHolder;
     }
@@ -72,7 +71,7 @@ public class ManageFlightDatasAdapter extends RecyclerView.Adapter<RecyclerView.
             dtimeBegin = (TextView) itemView.findViewById(R.id.manageflight_time_begin);
             dtimeEnd = (TextView) itemView.findViewById(R.id.manageflight_time_end);
             dtransCity = (TextView) itemView.findViewById(R.id.trans_city);
-            dDay = (TextView) itemView.findViewById(R.id.day);
+            dDay = (TextView) itemView.findViewById(R.id.item_day);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

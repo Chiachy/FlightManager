@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="2014.03.02"
-        android:id="@+id/day"
+        android:id="@+id/item_day"
         android:layout_alignTop="@+id/textView11"
         android:layout_alignStart="@+id/manageflight_time_begin" />
 
