@@ -13,16 +13,9 @@ import android.widget.TextView;
 import com.shanshan.flightmanager.Adapters.FlightChooseSiteAdapter;
 import com.shanshan.flightmanager.R;
 import com.shanshan.flightmanager.Tools.DataBaseModel;
-import com.shanshan.flightmanager.Tools.ManagerFlightDatas;
 import com.shanshan.flightmanager.Tools.ToolsRecyclerViewDividerLine;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ChooseWhereFromFragment extends DialogFragment {
-
-    List<ManagerFlightDatas> listWhereFrom = new ArrayList<ManagerFlightDatas>();
-    List<ManagerFlightDatas> list = new ArrayList<ManagerFlightDatas>();
 
     private FlightChooseSiteAdapter mAdapter;
     private DataBaseModel db;

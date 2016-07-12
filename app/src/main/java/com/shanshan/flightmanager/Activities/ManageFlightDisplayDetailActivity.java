@@ -23,6 +23,8 @@ import java.util.List;
 
 public class ManageFlightDisplayDetailActivity extends Activity {
 
+    private static final String TAG = "FlightID";
+
     private Toolbar mToolBar;
     private TextView mConpanyNameTV;
     private TextView mFlightNumberTV;
@@ -60,8 +62,17 @@ public class ManageFlightDisplayDetailActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(ManageFlightDisplayDetailActivity.this,
                         ManageFlightDataUpdateActivity.class);
-                intent.putExtra("flight_id", mFlightNumberTV.getId());
+                intent.putExtra("FlightNumber", mFlightNumberTV.getText().toString());
+                intent.putExtra("CompanyName", mConpanyNameTV.getText().toString());
+                intent.putExtra("TimeBegin", mTimeBeginTV.getText().toString());
+                intent.putExtra("TimeEnd", mTimeEndTV.getText().toString());
+                intent.putExtra("WhereFrom", mWhereFromTV.getText().toString());
+                intent.putExtra("WhereTo", mWhereToTV.getText().toString());
+                intent.putExtra("Day", mDayTV.getText().toString());
+                intent.putExtra("Transcity", mTranscityTV.getText().toString());
+                //Log.i(TAG, mFlightNumberTV.getText().toString());
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -71,7 +82,6 @@ public class ManageFlightDisplayDetailActivity extends Activity {
                 showComfirmAlert(datas);
             }
         });
-
     }
 
     public void initViews() {

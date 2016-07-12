@@ -71,9 +71,11 @@ public class FlightChooseActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        getDate(intent);
+
         mDisplayDayTv.setText(DisplayText(mYear, mMonth, mDayOfMonth));
+
+        /*Intent intent = getIntent();
+        getDate(intent);*/
 
         mWhereFrom.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,8 +113,7 @@ public class FlightChooseActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 } else {
                     FlightSearchResultActivity.datases = DataBaseModel.getInstance(FlightChooseActivity.this)
-                            .searchFlight(mWhereFrom.getText().toString(), mWhereto.getText().toString(),
-                                    mDisplayDayTv.getText().toString());
+                            .searchFlight(mWhereFrom.getText().toString(), mWhereto.getText().toString());
                     Intent intent = new Intent(FlightChooseActivity.this, FlightSearchResultActivity.class);
                     startActivity(intent);
                 }
@@ -139,11 +140,11 @@ public class FlightChooseActivity extends AppCompatActivity {
         mBroswingAll = (TextView) findViewById(R.id.new_browsing_all_flight);
     }
 
-    public void getDate(Intent intent) {
+    /*public void getDate(Intent intent) {
         mYear = intent.getIntExtra("year", 0);
         mMonth = intent.getIntExtra("month", 0);
         mDayOfMonth = intent.getIntExtra("day", 0);
-    }
+    }*/
 
     public String DisplayText(int year, int month, int day) {
         String finalYear = null;

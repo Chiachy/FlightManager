@@ -68,7 +68,6 @@ public class FlightChooseSiteAdapter extends RecyclerView.Adapter<RecyclerView.V
         return mDatas.size();
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView whereText;
 

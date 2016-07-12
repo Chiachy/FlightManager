@@ -14,6 +14,7 @@ public class ManagerUserDatas {
     private int balance;
 
     public ManagerUserDatas() {
+
     }
 
     public ManagerUserDatas(String id, String password, String name, String sex, String age) {

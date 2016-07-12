@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shanshan.flightmanager.Activities.FlightDetailsActivity;
 import com.shanshan.flightmanager.R;
@@ -16,7 +15,7 @@ import com.shanshan.flightmanager.Tools.ManagerFlightDatas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterSearchResult extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FlightSearchResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final String TAG = "day";
 
@@ -25,7 +24,7 @@ public class AdapterSearchResult extends RecyclerView.Adapter<RecyclerView.ViewH
     private Context mContext;
     public static List<ManagerFlightDatas> mDatas = new ArrayList<>();
 
-    public AdapterSearchResult(Context context, List<ManagerFlightDatas> mDatas) {
+    public FlightSearchResultAdapter(Context context, List<ManagerFlightDatas> mDatas) {
         this.mContext = context;
         this.mDatas = mDatas;
         mInflater = LayoutInflater.from(context);
@@ -76,7 +75,7 @@ public class AdapterSearchResult extends RecyclerView.Adapter<RecyclerView.ViewH
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mContext, mDatas.get(mPostion).getDay(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, mDatas.get(mPostion).getDay(), Toast.LENGTH_SHORT).show();
                     //Log.i(TAG, mDatas.get(mPostion).getDay());
                     Intent intent = new Intent(mContext, FlightDetailsActivity.class);
                     intent.putExtra("id",(int)itemView.getTag());

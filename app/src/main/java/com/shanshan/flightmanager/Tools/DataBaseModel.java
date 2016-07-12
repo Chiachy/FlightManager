@@ -43,7 +43,6 @@ public class DataBaseModel {
         return dataBaseModel;
     }
 
-
     /**
      * 将FlightDatas实例存储到数据库
      *
@@ -60,15 +59,38 @@ public class DataBaseModel {
             values.put("time_end", managerFlightDatas.getTimeEnd());            //降落时间
             values.put("trans_city", managerFlightDatas.getTransCity());        //中转城市
             values.put("day", managerFlightDatas.getDay());                     //航班飞行日
-            values.put("isForigen", managerFlightDatas.getIsForigen());           //国内外
+            values.put("isForigen", managerFlightDatas.getIsForigen());         //国内外
             db.insert("ManagerFlightDatas", null, values);
         }
     }
 
     /**
-     * 从数据库读取所有航班信息
+     * 更新航班信息
+     * @param managerFlightDatas
+     * @param formerID
+     */
+    public void updateFlightDatas(ManagerFlightDatas managerFlightDatas, String formerID) {
+        deleteFlightData(formerID);
+        saveFlightDatas(managerFlightDatas);
+        /*if (managerFlightDatas != null) {
+            ContentValues values = new ContentValues();
+            values.put("id", managerFlightDatas.getId());
+            values.put("company_id", managerFlightDatas.getCompanyId());
+            values.put("day", managerFlightDatas.getDay());
+            values.put("where_from", managerFlightDatas.getWhereFrom());
+            values.put("where_to", managerFlightDatas.getWhereTo());
+            values.put("time_begin", managerFlightDatas.getTimeBegin());
+            values.put("time_end", managerFlightDatas.getTimeEnd());
+            values.put("trans_city", managerFlightDatas.getTransCity());
+            values.put("isForigen", managerFlightDatas.getIsForigen());
+            db.update("ManagerFlightDatas", values, "id=" + formerID, null);
+        }*/
+    }
+
+    /**
+     *  从数据库读取所有航班信息
      *
-     * @return 航班信息表
+     *  @return 航班信息表
      */
     public List<ManagerFlightDatas> loadFlightDatas() {
         List<ManagerFlightDatas> list = new ArrayList<ManagerFlightDatas>();
@@ -98,12 +120,12 @@ public class DataBaseModel {
      * @param wherefrom 搜索关键字
      * @return 返回搜索结果列表
      */
-    public List<ManagerFlightDatas> searchFlight(String wherefrom, String whereto, String day) {
+    public List<ManagerFlightDatas> searchFlight(String wherefrom, String whereto) {
         List<ManagerFlightDatas> list = new ArrayList<>();
         Cursor cursor = null;
         String sql = "select * from ManagerFlightDatas " +
-                "where where_from=? or where_to=?";// + whereto ;//+ " and day=?";
-        String[] args = {wherefrom};
+                "where where_from=? and where_to=?";// + whereto ;//+ " and day=?";
+        String[] args = {wherefrom, whereto};
         cursor = db.rawQuery(sql, args);
         if (cursor.moveToFirst()) {
             do {
@@ -116,7 +138,7 @@ public class DataBaseModel {
                 managerFlightDatas.setTimeEnd(cursor.getString(cursor.getColumnIndex("time_end")));
                 managerFlightDatas.setTransCity(cursor.getString(cursor.getColumnIndex("trans_city")));
                 managerFlightDatas.setDay(cursor.getString(cursor.getColumnIndex("day")));
-                managerFlightDatas.setDay(cursor.getString(cursor.getColumnIndex("isForigen")));
+                managerFlightDatas.setIsForigen(cursor.getString(cursor.getColumnIndex("isForigen")));
                 list.add(managerFlightDatas);
             } while (cursor.moveToNext());
         }
@@ -212,23 +234,6 @@ public class DataBaseModel {
      */
     public int deleteOrderData(int id) {
         String[] ids = {String.valueOf(id)};
-        /*if (id / 10 == 0) {
-
-            int[] intIds = new int[1];
-            intIds[0] = id;
-
-            for (int i = 0; i < intIds.length; i++) {
-                ids = ids + intIds[i];
-            }
-
-        } else if (id / 10 >= 1) {
-            int[] intIds = new int[2];
-            intIds[0] = id / 10;
-            intIds[1] = id % 10;
-            for (int i = 0; i < intIds.length; i++) {
-                ids = ids + intIds[i];
-            }
-        }*/
         return db.delete("ManagerOrderDatas", "id=?", ids);
     }
 

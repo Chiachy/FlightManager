@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import com.shanshan.flightmanager.Adapters.AdapterSearchResult;
+import com.shanshan.flightmanager.Adapters.FlightSearchResultAdapter;
 import com.shanshan.flightmanager.Tools.ManagerFlightDatas;
 import com.shanshan.flightmanager.R;
 import com.shanshan.flightmanager.Tools.ToolsRecyclerViewDividerLine;
@@ -25,7 +25,7 @@ public class FlightSearchResultActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView resultList;
-    private AdapterSearchResult adapter;
+    private FlightSearchResultAdapter adapter;
     public static List<ManagerFlightDatas> datases = new ArrayList<>();
 
     @Override
@@ -48,7 +48,7 @@ public class FlightSearchResultActivity extends AppCompatActivity {
 
         resultList.setLayoutManager(linearLayoutManager);
 
-        adapter = new AdapterSearchResult(this,datases);
+        adapter = new FlightSearchResultAdapter(this, datases);
         resultList.setAdapter(adapter);
 
         if (datases.size() > 0) {

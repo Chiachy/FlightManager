@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
-                android:text="始发地"
+                android:text="@string/booking_wherefrom"
                 android:textSize="30sp" />
 
             <ImageView
@@ -47,7 +47,6 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:entries="@array/whereto"
                 android:gravity="center"
                 android:text="目的地"
                 android:textSize="30sp" />
@@ -60,6 +59,7 @@
             android:layout_gravity="center_horizontal"
             android:text="点击上方文字选择"
             android:textAppearance="?android:attr/textAppearanceSmall" />
+
     </LinearLayout>
 
 

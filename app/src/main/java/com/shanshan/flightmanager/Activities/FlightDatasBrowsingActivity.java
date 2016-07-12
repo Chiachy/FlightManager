@@ -23,7 +23,7 @@ import com.shanshan.flightmanager.Tools.ToolsRecyclerViewDividerLine;
 public class FlightDatasBrowsingActivity extends AppCompatActivity {
 
     //private FloatingActionButton flightBroChooseButton;
-    private RecyclerView userListView;
+    private RecyclerView userRecyclerView;
     private FlightBroswingAdapter mAdapter;
     /*
      *  设置menu item的监听器
@@ -72,24 +72,25 @@ public class FlightDatasBrowsingActivity extends AppCompatActivity {
 
         mAdapter = new FlightBroswingAdapter(this, DataBaseModel.getInstance(this).loadFlightDatas());
 
-        userListView.setAdapter(mAdapter);
+        userRecyclerView.setAdapter(mAdapter);
         //设置re-View的布局，并调用
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.VERTICAL , false);
-        userListView.setLayoutManager(linearLayoutManager);
-        userListView.setHasFixedSize(true);//提高性能
+        userRecyclerView.setLayoutManager(linearLayoutManager);
+        userRecyclerView.setHasFixedSize(true);//提高性能
         //设置分割线属性，并调用
-        ToolsRecyclerViewDividerLine recycViewDividerLine = new ToolsRecyclerViewDividerLine(ToolsRecyclerViewDividerLine.HORIZONTAL);
+        ToolsRecyclerViewDividerLine recycViewDividerLine = new ToolsRecyclerViewDividerLine(
+                ToolsRecyclerViewDividerLine.HORIZONTAL);
         recycViewDividerLine.setSize(15);
         recycViewDividerLine.setColor(0xFFDDDDDD);
-        userListView.addItemDecoration(recycViewDividerLine);
+        userRecyclerView.addItemDecoration(recycViewDividerLine);
     }
 
     /**
      * 初始化View
      * */
     private void initViews() {
-        userListView = (RecyclerView) findViewById(R.id.userlistView);
+        userRecyclerView = (RecyclerView) findViewById(R.id.userlistView);
     }
 
     /*

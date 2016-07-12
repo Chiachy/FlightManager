@@ -39,7 +39,6 @@
         <activity android:name=".Activities.ManageFlightDisplayDetailActivity" />
         <activity android:name=".Activities.ManageFlightDataUpdateActivity" />
         <activity android:name=".Activities.ManagerUserDetailActivity" />
-        <activity android:name=".Activities.ManagerOrderDisplayDetailActivity"></activity>
     </application>
 
 </manifest>

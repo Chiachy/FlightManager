@@ -53,38 +53,40 @@ public class UserSignUpActivity extends Activity {
                 if (DataBaseModel.getInstance(UserSignUpActivity.this)
                         .searchUser(userId.getText().toString()).getId() == null) {
 
-                    if(userPassword.getText().toString().length() >= 6){
+                    if (userAge.getText().toString().length() == 18) {
+                        if (userPassword.getText().toString().length() >= 6) {
+                            if (userPassword.getText().toString().equals(passwordConfirm.getText().toString())) {
 
-                        if(userPassword.getText().toString().equals(passwordConfirm.getText()
-                                .toString())){
+                                ManagerUserDatas managerUserDatas = new ManagerUserDatas();
 
-                            ManagerUserDatas managerUserDatas = new ManagerUserDatas();
+                                managerUserDatas.setId(userId.getText().toString());
+                                managerUserDatas.setPassword(userPassword.getText().toString());
+                                managerUserDatas.setSex(mRadioGroup.getCheckedRadioButtonId()
+                                        == R.id.male ? "男" : "女");
+                                managerUserDatas.setName(userName.getText().toString());
+                                managerUserDatas.setAge(userAge.getText().toString());
 
-                            managerUserDatas.setId(userId.getText().toString());
-                            managerUserDatas.setPassword(userPassword.getText().toString());
-                            managerUserDatas.setSex(mRadioGroup.getCheckedRadioButtonId()
-                                    == R.id.male ? "男":"女");
-                            managerUserDatas.setName(userName.getText().toString());
-                            managerUserDatas.setAge(userAge.getText().toString());
-                            /*Log.i(TAG, "年龄" + managerUserDatas.getId() + "，身份证"
-                                    + managerUserDatas.getAge());*/
-                            DataBaseModel.getInstance(UserSignUpActivity.this).saveUser(managerUserDatas);
+                                DataBaseModel.getInstance(UserSignUpActivity.this).saveUser(managerUserDatas);
 
-                            Toast.makeText(UserSignUpActivity.this, "注册成功", Toast.LENGTH_LONG).show();
-                            finish();
+                                Toast.makeText(UserSignUpActivity.this, "注册成功", Toast.LENGTH_LONG).show();
+                                finish();
 
-                        }else{
-                            Toast.makeText(UserSignUpActivity.this, "密码不一致", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(UserSignUpActivity.this, "密码不一致", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(UserSignUpActivity.this, "密码长度应至少六位", Toast.LENGTH_LONG).show();
                         }
-                    }else{
-                        Toast.makeText(UserSignUpActivity.this, "密码长度应至少六位", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(UserSignUpActivity.this, "请输入正确的身份证号", Toast.LENGTH_LONG).show();
                     }
-                }else{
+                } else {
                     Toast.makeText(UserSignUpActivity.this, "此用户已被注册", Toast.LENGTH_LONG).show();
                 }
             }
-        });
+                                  }
 
+        );
 
 
     }

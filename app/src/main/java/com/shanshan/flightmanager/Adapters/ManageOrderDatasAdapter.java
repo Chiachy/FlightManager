@@ -73,11 +73,9 @@ public class ManageOrderDatasAdapter extends RecyclerView.Adapter<RecyclerView.V
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    /*String tags = String.valueOf(itemView.getTag());
-                    int tag = Integer.valueOf(tags) + 1;
-                    String newTag = String.valueOf(tag);*/
-                    //String newTag = String.valueOf(itemView.getId());
-                    //mInputOrderIdEdTxt.setText(newTag);
+                    String newTag = orderNumber.getText().toString();
+                    mInputOrderIdEdTxt.setText("");
+                    mInputOrderIdEdTxt.setText(newTag);
                     //Toast.makeText(mContext, "已将该订单号粘贴至下方输入框", Toast.LENGTH_SHORT).show();
                 }
             });

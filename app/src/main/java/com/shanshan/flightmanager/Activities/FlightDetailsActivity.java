@@ -11,7 +11,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.shanshan.flightmanager.Adapters.FlightBroswingAdapter;
-import com.shanshan.flightmanager.Adapters.AdapterSearchResult;
+import com.shanshan.flightmanager.Adapters.FlightSearchResultAdapter;
 import com.shanshan.flightmanager.Tools.DataBaseModel;
 import com.shanshan.flightmanager.Tools.FlightManagerApplication;
 import com.shanshan.flightmanager.Tools.ManagerFlightDatas;
@@ -75,7 +75,7 @@ public class FlightDetailsActivity extends Activity {
         });
 
         if (getIntent().getBooleanExtra("isSearchResult",false)) {
-            datas = AdapterSearchResult.mDatas.get(getIntent().getIntExtra("id",0));
+            datas = FlightSearchResultAdapter.mDatas.get(getIntent().getIntExtra("id", 0));
         } else {
             datas = FlightBroswingAdapter.mDatas.get(getIntent().getIntExtra("id", 0));
         }

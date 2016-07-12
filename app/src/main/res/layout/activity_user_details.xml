@@ -95,7 +95,7 @@
         android:layout_marginBottom="4dp"
         android:textColor="@color/white"
         android:background="@color/skyBlue"
-        android:layout_width="wrap_content"
+        android:layout_width="268dp"
         android:layout_height="wrap_content"
         android:text="退出登录"
         android:id="@+id/exit_login"

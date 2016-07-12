@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.shanshan.flightmanager.R;
@@ -28,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDetailsActivity extends Activity {
-
-    final FlightManagerApplication application = (FlightManagerApplication) getApplication();
 
     private RecyclerView mRecyclerView;
     private OrderAdapter orderAdapter;
@@ -66,6 +65,7 @@ public class UserDetailsActivity extends Activity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FlightManagerApplication application = (FlightManagerApplication) getApplication();
                 if(application.getIsLogin()){
                     application.setIsLogin(false);
                     finish();
@@ -183,6 +183,7 @@ public class UserDetailsActivity extends Activity {
                         public void onClick(DialogInterface dialog, int id) {
                             DataBaseModel db = DataBaseModel.getInstance(UserDetailsActivity.this);
                             db.deleteOrderData(mdatas.getId());
+                            Toast.makeText(UserDetailsActivity.this, "订单已删除，重新登陆后生效", Toast.LENGTH_SHORT).show();
                             dismiss();
                         }
                     })

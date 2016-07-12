@@ -12,12 +12,6 @@
         android:title="@string/booking"
         android:titleTextColor="#ffffff" />
 
-    <com.shanshan.flightmanager.Tools.SlidingTabLayout
-        android:layout_below="@id/new_toolbar_view"
-        android:id="@+id/sliding_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +19,6 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="70dp"
-        android:layout_below="@+id/sliding_tabs"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

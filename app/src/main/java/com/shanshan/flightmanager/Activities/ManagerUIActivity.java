@@ -33,14 +33,13 @@ public class ManagerUIActivity extends FragmentActivity {
         setActionBar(mManagerViewToolbar);
         mManagerViewToolbar.setOnMenuItemClickListener(mOnMenuItemClickListener);
 
-        android.app.FragmentManager fm = getFragmentManager();
         ViewPager viewPager = (ViewPager) findViewById(R.id.manager_viewpager);
         mPagerAdapter = new MyPagerAdapter( getSupportFragmentManager() );
 
         mPagerTabStrip = (PagerTabStrip) findViewById(R.id.view_pager_header);
         mPagerTabStrip.setTabIndicatorColor(Color.parseColor("#0090ff"));
         viewPager.setAdapter(mPagerAdapter);
-        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(0);
     }
 
     //Toolbar点击事件
