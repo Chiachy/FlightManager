@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">航班管家</string>
     <string name="beginning_animation">您贴心的飞行小助理!</string>
-    <string name="copyright">Copyright © 2016 By Shanshan </string>
+    <string name="copyright">Copyright © 2017 by Chiachy</string>
     <string name="booking">机票预订</string>
 
     <!-- Strings related to login -->

@@ -14,7 +14,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.shanshan.flightmanager.Fragments.ItemFragment"
+        tools:context="com.chiachy.flightmanager.Fragments.ItemFragment"
         tools:listitem="@layout/fragment_wherefromitem" />
 
 </ScrollView>

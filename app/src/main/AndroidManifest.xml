@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shanshan.flightmanager">
+    package="com.chiachy.flightmanager">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -8,27 +8,27 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".Tools.FlightManagerApplication"
+        android:name="com.chiachy.flightmanager.Tools.FlightManagerApplication"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.FlightDatasBrowsingActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.FlightDatasBrowsingActivity" />
         <activity
-            android:name=".Activities.FlightDetailsActivity"
+            android:name="com.chiachy.flightmanager.Activities.FlightDetailsActivity"
             android:label="@string/title_activity_activity_flight_details" />
         <activity
-            android:name=".Activities.UserSignInActivity"
+            android:name="com.chiachy.flightmanager.Activities.UserSignInActivity"
             android:label="@string/title_activity_activity_user_login" />
-        <activity android:name=".Activities.ManagerUIActivity" />
-        <activity android:name=".Activities.UserDetailsActivity" />
-        <activity android:name=".Activities.UserSignUpActivity" />
-        <activity android:name=".Activities.FlightSearchResultActivity" />
-        <activity android:name=".Activities.ManageFlightAddActivity" />
-        <activity android:name=".Activities.FlightChooseActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.ManagerUIActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.UserDetailsActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.UserSignUpActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.FlightSearchResultActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.ManageFlightAddActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.FlightChooseActivity" />
         <activity
-            android:name=".Activities.BeginningAnimationActivity"
+            android:name="com.chiachy.flightmanager.Activities.BeginningAnimationActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,9 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ManageFlightDisplayDetailActivity" />
-        <activity android:name=".Activities.ManageFlightDataUpdateActivity" />
-        <activity android:name=".Activities.ManagerUserDetailActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.ManageFlightDisplayDetailActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.ManageFlightDataUpdateActivity" />
+        <activity android:name="com.chiachy.flightmanager.Activities.ManagerUserDetailActivity" />
+        <activity android:name="com.chiachy.flightmanager.MainActivity"></activity>
     </application>
 
 </manifest>
